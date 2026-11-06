@@ -1,0 +1,37 @@
+[
+  {
+    "name": {
+      "en": "Example · AI Task Planner",
+      "pt": "Exemplo · Planejador de tarefas com IA"
+    },
+    "description": {
+      "en": "Demo project: a task planner built with AI assistance. This example includes both a project link and an optional GitHub link.",
+      "pt": "Projeto demonstrativo: um planejador de tarefas desenvolvido com auxílio de IA. Este exemplo inclui o link do projeto e o link opcional do GitHub."
+    },
+    "link": "https://www.google.com/",
+    "github": "https://www.google.com/"
+  },
+  {
+    "name": {
+      "en": "Example · Writing Assistant",
+      "pt": "Exemplo · Assistente de escrita"
+    },
+    "description": {
+      "en": "Demo project: a writing assistant. This example omits the GitHub field, so only the project link appears on the card.",
+      "pt": "Projeto demonstrativo: um assistente de escrita. Este exemplo não possui o campo GitHub, então apenas o link do projeto aparece no card."
+    },
+    "link": "https://www.google.com/"
+  },
+  {
+    "name": {
+      "en": "Example · Research Dashboard and Knowledge Organizer",
+      "pt": "Exemplo · Painel de pesquisa e organização de conhecimento"
+    },
+    "description": {
+      "en": "Demo project with a longer description: a dashboard for organizing research, grouping references by topic and reviewing summaries created with AI assistance. Use this entry to preview cards with more detailed content before replacing it with your own project information.",
+      "pt": "Projeto demonstrativo com uma descrição mais longa: um painel para organizar pesquisas, agrupar referências por assunto e revisar resumos criados com auxílio de IA. Use este item para visualizar cards com conteúdo mais detalhado antes de substituí-lo pelas informações do seu projeto."
+    },
+    "link": "https://www.google.com/",
+    "github": ""
+  }
+]
