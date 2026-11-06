@@ -36,6 +36,10 @@ Personalize nome, stack e redes sociais em `app/data/profile.ts`. O idioma inici
 
 ## Nuxt
 
+### Responsive regression check
+
+After `npm run build`, run `npm exec --yes --package=playwright -- node tests/responsive.mjs` with Google Chrome installed. The audit checks all four pages in both languages at 11 widths from 360 to 1920 px, including horizontal overflow, header spacing, fixed positioning, and browser runtime errors. Playwright runs temporarily without changing the project dependencies.
+
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup

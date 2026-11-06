@@ -1,13 +1,14 @@
 <template>
   <header class="header">
     <NuxtLink class="brand" to="/"
-      >e<span>.</span><small>{{ profile.name }} / dev</small></NuxtLink
+      >e<span>.</span
+      ><small>{{ profile.name }} / {{ t.header.role }}</small></NuxtLink
     >
     <nav :aria-label="t.navigation">
-      <NuxtLink to="/">Home</NuxtLink
-      ><NuxtLink to="/ai-assisted">AI Assisted</NuxtLink
-      ><NuxtLink to="/work">Work</NuxtLink
-      ><NuxtLink to="/legacy">Legacy</NuxtLink>
+      <NuxtLink to="/">{{ t.header.home }}</NuxtLink
+      ><NuxtLink to="/ai-assisted">{{ t.header.aiAssisted }}</NuxtLink
+      ><NuxtLink to="/work">{{ t.header.work }}</NuxtLink
+      ><NuxtLink to="/legacy">{{ t.header.legacy }}</NuxtLink>
     </nav>
     <LanguageSwitch />
   </header>

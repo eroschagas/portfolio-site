@@ -9,7 +9,7 @@
     </div>
     <div class="stack__list">
       <div
-        v-for="(technology, index) in profile.stack"
+        v-for="(technology, index) in technologies"
         :key="technology"
         class="stack__item"
       >
@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import { profile } from "~/data/profile";
-const { t } = usePortfolio();
-const stackSymbols = ["V", "N", "TS", "JS", "</>", "⑂"];
+const { language, t } = usePortfolio();
+const technologies = computed(() => profile.getStack(language.value));
+const stackSymbols = ["V", "N", "TS", "JS", "</>", "⑂", "⚛", "✳"];
 </script>

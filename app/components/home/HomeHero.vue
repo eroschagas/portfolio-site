@@ -29,7 +29,7 @@
           <p class="code-indent">
             role: <em>'{{ t.codeRole }}'</em>,
           </p>
-          <p class="code-indent">stack: [<em>'Vue', 'Nuxt', 'TS'</em>],</p>
+          <p class="code-indent">stack: [<em>'Vue', 'Nuxt', 'React', 'TS'</em>],</p>
           <p class="code-indent">
             learning: <em>'{{ t.codeLearning }}'</em>
           </p>

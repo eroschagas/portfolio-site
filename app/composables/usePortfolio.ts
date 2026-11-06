@@ -1,5 +1,12 @@
 const translations = {
   pt: {
+    header: {
+      home: "Início",
+      aiAssisted: "Com IA",
+      work: "Experiência",
+      legacy: "Legado",
+      role: "Engenheiro Frontend",
+    },
     navigation: "Navegação principal",
     language: "Selecionar idioma",
     soon: "em breve",
@@ -45,6 +52,13 @@ const translations = {
     codeLearning: "Sempre",
   },
   en: {
+    header: {
+      home: "Home",
+      aiAssisted: "AI Assisted",
+      work: "Work",
+      legacy: "Legacy",
+      role: "Frontend Engineer",
+    },
     navigation: "Main navigation",
     language: "Select language",
     soon: "coming soon",
