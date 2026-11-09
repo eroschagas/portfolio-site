@@ -1,3 +1,5 @@
+import type { Language } from "~/models/Project";
+
 const translations = {
   pt: {
     workContent: {
@@ -55,7 +57,7 @@ const translations = {
     work: "Experiências profissionais, desafios reais e o que aprendi pelo caminho.",
     legacy:
       "Onde tudo começou. Os primeiros projetos e a evolução de cada ideia.",
-    back: "Voltar para home",
+    back: "Voltar ao início",
     collection: "COLEÇÃO",
     status: "EM CONSTRUÇÃO",
     emptyTitle: "O próximo capítulo está chegando.",
@@ -141,10 +143,7 @@ const translations = {
   },
 };
 export const usePortfolio = () => {
-  const language = useCookie<"pt" | "en">("portfolio-language", {
-    default: () => "en",
-    sameSite: "lax",
-  });
+  const language = useState<Language>("portfolio-language", () => "en");
   const t = computed(() => translations[language.value === "pt" ? "pt" : "en"]);
   return { language, t };
 };

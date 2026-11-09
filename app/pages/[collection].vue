@@ -40,21 +40,21 @@ definePageMeta({
 const category = computed(() => {
   const categories = {
     "ai-assisted": {
-      name: "AI Assisted",
+      name: t.value.header.aiAssisted,
       number: "01",
       symbol: "✳",
       description: t.value.ai,
       empty: t.value.empty,
     },
     work: {
-      name: "Work",
+      name: t.value.header.work,
       number: "02",
       symbol: "⌘",
       description: t.value.work,
       empty: t.value.emptyWork,
     },
     legacy: {
-      name: "Legacy",
+      name: t.value.header.legacy,
       number: "03",
       symbol: "</>",
       description: t.value.legacy,

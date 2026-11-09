@@ -26,7 +26,7 @@ Durante `npm run dev`, alterações nos arquivos são recarregadas. Em produçã
 
 ### Empresas e projetos de Work
 
-Cada JSON em `app/data/work/` gera automaticamente um card em `/work`. O nome do arquivo define a rota da empresa: `aurora-studio.json` abre `/work/aurora-studio`. Aurora Studio e Northstar Labs são fictícias e estão identificadas como demonstrações. `econet.json` contém a experiência real na Econet Editora (07/2022 a 08/2024, período confirmado pelo autor) e 12 projetos com nomes e descrições bilíngues baseados nas informações fornecidas pelo autor. A apresentação da empresa foi resumida a partir do [site institucional](https://grupo.econeteditora.com.br/sobre-econet.html). Os projetos sem imagens não exibem galeria; para adicioná-las, use os respectivos IDs em `public/work/<id>/`.
+Cada JSON em `app/data/work/` gera automaticamente um card em `/work`. O nome do arquivo define a rota da empresa: `econet.json` abre `/work/econet`. Esse arquivo contém a experiência real na Econet Editora (07/2022 a 08/2024, período confirmado pelo autor) e 12 projetos com nomes e descrições bilíngues baseados nas informações fornecidas pelo autor. A apresentação da empresa foi resumida a partir do [site institucional](https://grupo.econeteditora.com.br/sobre-econet.html). As empresas fictícias e suas imagens foram removidas. Os projetos sem imagens não exibem galeria; para adicioná-las, use os respectivos IDs em `public/work/<id>/`.
 
 ```json
 {
@@ -50,7 +50,7 @@ Cada JSON em `app/data/work/` gera automaticamente um card em `/work`. O nome do
 }
 ```
 
-O campo `start` é obrigatório e `end` é opcional. Ambos usam o formato `MM/AAAA` (por exemplo, `01/2026`). Omita `end` ou deixe uma string vazia para trabalhos atuais, exibidos como “Atual” em português e “Present” em inglês. O período aparece no card e, em tamanho discreto, abaixo da descrição na página da empresa. O mês deve ser válido e a data final não pode ser anterior à inicial. As datas dos mocks são fictícias e devem ser substituídas junto com os dados das empresas; Northstar Labs demonstra um trabalho atual.
+O campo `start` é obrigatório e `end` é opcional. Ambos usam o formato `MM/AAAA` (por exemplo, `01/2026`). Omita `end` ou deixe uma string vazia para trabalhos atuais, exibidos como “Atual” em português e “Present” em inglês. O período aparece no card e, em tamanho discreto, abaixo da descrição na página da empresa. O mês deve ser válido e a data final não pode ser anterior à inicial.
 
 A listagem mostra primeiro os trabalhos atuais, ordenados pelo `start` mais recente. Em seguida vêm os trabalhos concluídos, ordenados pelo `end` mais recente, usando `start` como desempate. Datas idênticas usam o slug da empresa para manter a ordem estável.
 
@@ -60,7 +60,7 @@ Em empresas e projetos de Work, `name` aceita um objeto com `pt` e `en` ou uma s
 
 Coloque as imagens diretamente em `public/work/<id>/`, por exemplo `public/work/customer-portal/01-home.png`. Não é necessário listar imagens no JSON. São aceitos PNG, JPG/JPEG, WebP, AVIF, GIF e SVG, ordenados pelo nome do arquivo; use prefixos como `01-`, `02-` e `03-` para controlar a ordem. Subpastas e arquivos que não são imagens são ignorados.
 
-A lista de imagens é gerada ao iniciar o Nuxt ou gerar o build. Reinicie `npm run dev` após adicionar/remover imagens ou pastas; em produção, gere e publique um novo build. Uma pasta ausente ou sem imagens não gera galeria. Junto à descrição, as miniaturas aparecem lado a lado: até três em áreas maiores que 900 px, duas entre 561 e 900 px e uma em áreas de até 560 px. Havendo imagens restantes, um card `+N` mostra a quantidade não exibida. Clique em uma miniatura para abrir o carrossel ampliado naquela imagem; o card `+N` abre a primeira imagem oculta. No modal, há navegação circular por botões, setas do teclado e gesto horizontal de toque. Feche com Escape, botão de fechar ou clique no fundo. Uma imagem única não exibe contador de extras nem setas no modal. As imagens dos mocks são ilustrações SVG, não trabalhos reais.
+A lista de imagens é gerada ao iniciar o Nuxt ou gerar o build. Reinicie `npm run dev` após adicionar/remover imagens ou pastas; em produção, gere e publique um novo build. Uma pasta ausente ou sem imagens não gera galeria. Junto à descrição, as miniaturas aparecem lado a lado: até três em áreas maiores que 900 px, duas entre 561 e 900 px e uma em áreas de até 560 px. Havendo imagens restantes, um card `+N` mostra a quantidade não exibida. Clique em uma miniatura para abrir o carrossel ampliado naquela imagem; o card `+N` abre a primeira imagem oculta. No modal, há navegação circular por botões, setas do teclado e gesto horizontal de toque. Feche com Escape, botão de fechar ou clique no fundo. Uma imagem única não exibe contador de extras nem setas no modal.
 
 Validação: `node --experimental-strip-types --test tests/work-models.test.mjs`. Após `npm run build`, execute `npm exec --yes --package=playwright -- node tests/work-gallery.mjs` com Google Chrome instalado para testar a navegação e o modal.
 
@@ -72,13 +72,15 @@ Validação: `node --experimental-strip-types --test tests/work-models.test.mjs`
 - `app/pages`: composição das telas e integração com as rotas.
 - `app/composables/usePortfolio.ts`: traduções e estado reativo do idioma, integrado à Composition API do Vue.
 
-Personalize nome, stack e redes sociais em `app/data/profile.ts`. O idioma inicial é inglês; uma preferência já salva pelo visitante é respeitada. O header ocupa a largura da janela e fica fixo durante a rolagem.
+Personalize nome, stack e redes sociais em `app/data/profile.ts`. O parâmetro global `?lang=pt` ou `?lang=en` define o idioma em qualquer página e atualiza o cookie `portfolio-language`. Sem um parâmetro válido, usa-se a preferência do cookie; se não houver uma preferência válida, o cookie é criado em inglês. Por exemplo: `/work/econet?lang=pt`. Valores inválidos ou parâmetros `lang` repetidos são ignorados. O switch também atualiza o parâmetro quando ele já está na URL, preservando outros parâmetros e o fragmento. Sem `lang` na URL, o switch altera apenas a preferência salva. O header ocupa a largura da janela e fica fixo durante a rolagem.
+
+Valide a resolução do idioma com `node --experimental-strip-types --test tests/language-preference.test.mjs`. Após o build, `npm exec --yes --package=playwright -- node tests/language-routing.mjs` verifica a renderização no servidor, a criação do cookie, a prioridade do parâmetro e a navegação no Chrome.
 
 ## Nuxt
 
 ### Responsive regression check
 
-After `npm run build`, run `npm exec --yes --package=playwright -- node tests/responsive.mjs` with Google Chrome installed. The audit checks the four main pages, both demo company pages and Econet in both languages at 11 widths from 360 to 1920 px, including horizontal overflow, header spacing, fixed positioning, and browser runtime errors. Playwright runs temporarily without changing the project dependencies.
+After `npm run build`, run `npm exec --yes --package=playwright -- node tests/responsive.mjs` with Google Chrome installed. The audit checks the four main pages and Econet in both languages at 11 widths from 360 to 1920 px, including horizontal overflow, header spacing, fixed positioning, and browser runtime errors. Playwright runs temporarily without changing the project dependencies.
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 

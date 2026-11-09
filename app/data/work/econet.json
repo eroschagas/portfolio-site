@@ -8,10 +8,10 @@
   "end": "08/2024",
   "projects": [
     {
-      "id": "econet-revisor-tributario",
+      "id": "econet-tax-review-platform",
       "name": {
-        "en": "Revisor Tributário Econet · Tax Review Platform",
-        "pt": "Revisor Tributário Econet"
+        "en": "RTE · Tax Review Platform",
+        "pt": "RTE · Revisor Tributário Econet"
       },
       "description": {
         "en": "Feature implementation and bug fixes for Econet's tax review platform, covering taxes across Brazil. The application uses Vue.js on the front end, a Lumen/Laravel API and a MySQL database. Its technology stack also includes Vuex, Vuetify and Bootstrap, with source control managed through GitLab.",
@@ -19,7 +19,7 @@
       }
     },
     {
-      "id": "econet-area-do-cliente",
+      "id": "econet-customer-area",
       "name": {
         "en": "Econet Customer Area",
         "pt": "Área do Cliente Econet"
@@ -30,9 +30,9 @@
       }
     },
     {
-      "id": "econet-indique-e-ganhe",
+      "id": "econet-customer-referral-program",
       "name": {
-        "en": "Indique e Ganhe · Customer Referral Program",
+        "en": "Customer Referral Program",
         "pt": "Indique e Ganhe"
       },
       "description": {
@@ -41,7 +41,7 @@
       }
     },
     {
-      "id": "econet-cursos-modulares",
+      "id": "econet-modular-courses",
       "name": {
         "en": "Modular Courses",
         "pt": "Cursos Modulares"
@@ -52,7 +52,7 @@
       }
     },
     {
-      "id": "econet-calculadora-simples-nacional",
+      "id": "econet-simples-nacional-tax-calculator",
       "name": {
         "en": "Simples Nacional Tax Calculator",
         "pt": "Calculadora Simples Nacional"
@@ -63,7 +63,7 @@
       }
     },
     {
-      "id": "econet-calculadora-icms-monofasico",
+      "id": "econet-single-phase-icms-calculator",
       "name": {
         "en": "Single-Phase ICMS Calculator",
         "pt": "Calculadora ICMS Monofásico"
@@ -74,7 +74,7 @@
       }
     },
     {
-      "id": "econet-validador-de-rubricas",
+      "id": "econet-payroll-item-validator",
       "name": {
         "en": "Payroll Item Validator",
         "pt": "Validador de Rubricas"
@@ -85,7 +85,7 @@
       }
     },
     {
-      "id": "econet-calculadora-horas-extras-adicional-noturno",
+      "id": "econet-overtime-night-shift-premium-calculator",
       "name": {
         "en": "Overtime and Night Shift Premium Calculator",
         "pt": "Calculadora de Horas Extras e Adicional Noturno"
@@ -96,7 +96,7 @@
       }
     },
     {
-      "id": "econet-dashboard-gdi",
+      "id": "econet-gdi-dashboard",
       "name": {
         "en": "GDI · Individual Performance Dashboard",
         "pt": "Dashboard GDI · Desempenho Individual"
@@ -118,7 +118,7 @@
       }
     },
     {
-      "id": "econet-lista-st",
+      "id": "econet-st-tax-list",
       "name": {
         "en": "ST Tax List · ICMS-ST Tools and NCM Search",
         "pt": "Lista ST · Ferramentas ICMS-ST e Consulta de NCM"
@@ -129,7 +129,7 @@
       }
     },
     {
-      "id": "econet-cadastro-migracao-base-dados",
+      "id": "econet-database-registration-migration",
       "name": {
         "en": "Database Registration and Migration",
         "pt": "Cadastro e Migração da Base de Dados"

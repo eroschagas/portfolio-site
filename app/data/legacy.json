@@ -1,17 +1,6 @@
 [
   {
     "name": {
-      "en": "Find Your Meal",
-      "pt": "Find Your Meal"
-    },
-    "description": {
-      "en": "Recipe discovery app built with React and TheMealDB API. Explore dishes by category or country, search for recipes, or discover a random meal, with ingredients, measurements and preparation instructions.",
-      "pt": "Aplicação de descoberta de receitas desenvolvida com React e a API TheMealDB. Explore pratos por categoria ou país, busque receitas ou descubra uma refeição aleatória, com ingredientes, medidas e instruções de preparo."
-    },
-    "link": "https://find-your-meal-site.netlify.app/"
-  },
-  {
-    "name": {
       "en": "Cinthia G. Christino · Professional Website",
       "pt": "Cinthia G. Christino · Site profissional"
     },
@@ -23,14 +12,25 @@
   },
   {
     "name": {
-      "en": "João Lemon · UX/UI Portfolio",
-      "pt": "João Lemon · Portfólio UX/UI"
+      "en": "Find Your Meal",
+      "pt": "Find Your Meal"
     },
     "description": {
-      "en": "Front-end portfolio implementation presenting João Lemon's UX/UI design work. Combines an animated introduction, a project slider and a quote request form using HTML, CSS and JavaScript.",
-      "pt": "Implementação front-end de um portfólio que apresenta o trabalho de design UX/UI de João Lemon. Combina introdução animada, slider de projetos e formulário de solicitação de orçamento usando HTML, CSS e JavaScript."
+      "en": "Recipe discovery app built with React and TheMealDB API. Explore dishes by category or country, search for recipes, or discover a random meal, with ingredients, measurements and preparation instructions.",
+      "pt": "Aplicação de descoberta de receitas desenvolvida com React e a API TheMealDB. Explore pratos por categoria ou país, busque receitas ou descubra uma refeição aleatória, com ingredientes, medidas e instruções de preparo."
     },
-    "link": "https://portfoliojoaolemon.netlify.app/"
+    "link": "https://find-your-meal-site.netlify.app/"
+  },
+  {
+    "name": {
+      "en": "React Posts · Searchable Feed",
+      "pt": "Posts React · Feed com busca"
+    },
+    "description": {
+      "en": "React study project that fetches posts and images from JSONPlaceholder and displays them in reusable cards. Includes title search and incremental loading, exploring API integration, component state and class-based components.",
+      "pt": "Projeto de estudo em React que busca posts e imagens da API JSONPlaceholder e os exibe em cards reutilizáveis. Inclui busca por título e carregamento incremental, explorando integração com API, estado e componentes de classe."
+    },
+    "link": "https://projeto-1-eros-react.netlify.app/"
   },
   {
     "name": {
@@ -45,13 +45,13 @@
   },
   {
     "name": {
-      "en": "React Posts · Searchable Feed",
-      "pt": "Posts React · Feed com busca"
+      "en": "João Lemon · UX/UI Portfolio",
+      "pt": "João Lemon · Portfólio UX/UI"
     },
     "description": {
-      "en": "React study project that fetches posts and images from JSONPlaceholder and displays them in reusable cards. Includes title search and incremental loading, exploring API integration, component state and class-based components.",
-      "pt": "Projeto de estudo em React que busca posts e imagens da API JSONPlaceholder e os exibe em cards reutilizáveis. Inclui busca por título e carregamento incremental, explorando integração com API, estado e componentes de classe."
+      "en": "Front-end portfolio implementation presenting João Lemon's UX/UI design work. Combines an animated introduction, a project slider and a quote request form using HTML, CSS and JavaScript.",
+      "pt": "Implementação front-end de um portfólio que apresenta o trabalho de design UX/UI de João Lemon. Combina introdução animada, slider de projetos e formulário de solicitação de orçamento usando HTML, CSS e JavaScript."
     },
-    "link": "https://projeto-1-eros-react.netlify.app/"
+    "link": "https://portfoliojoaolemon.netlify.app/"
   }
 ]

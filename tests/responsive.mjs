@@ -51,8 +51,6 @@ class ResponsiveAudit {
             "/ai-assisted",
             "/work",
             "/legacy",
-            "/work/aurora-studio",
-            "/work/northstar-labs",
             "/work/econet",
           ]) {
             await page.goto(`http://127.0.0.1:3088${route}`);
@@ -118,7 +116,7 @@ class ResponsiveAudit {
         process.exitCode = 1;
       } else {
         console.log(
-          "154 responsive checks passed: 7 routes, 11 widths (360–1920px), both languages; fixed header, no horizontal overflow or runtime errors.",
+          "110 responsive checks passed: 5 routes, 11 widths (360–1920px), both languages; fixed header, no horizontal overflow or runtime errors.",
         );
       }
     } finally {
