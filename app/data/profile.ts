@@ -14,7 +14,10 @@ export const profile = new PortfolioProfile(
     { en: "AI-assisted coding", pt: "Programação com IA" },
   ],
   [
-    { name: "LinkedIn", url: "" },
-    { name: "GitHub", url: "" },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/eros-chagas-b93911b3/",
+    },
+    { name: "GitHub", url: "https://github.com/eroschagas" },
   ],
 );

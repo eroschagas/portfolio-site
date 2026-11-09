@@ -1,37 +1,57 @@
 [
   {
     "name": {
-      "en": "Example · First Portfolio",
-      "pt": "Exemplo · Primeiro portfólio"
+      "en": "Find Your Meal",
+      "pt": "Find Your Meal"
     },
     "description": {
-      "en": "Demo project: an early portfolio with a personal introduction and project gallery. Includes both links as a complete entry example.",
-      "pt": "Projeto demonstrativo: um portfólio inicial com apresentação pessoal e galeria de projetos. Inclui os dois links como exemplo de um item completo."
+      "en": "Recipe discovery app built with React and TheMealDB API. Explore dishes by category or country, search for recipes, or discover a random meal, with ingredients, measurements and preparation instructions.",
+      "pt": "Aplicação de descoberta de receitas desenvolvida com React e a API TheMealDB. Explore pratos por categoria ou país, busque receitas ou descubra uma refeição aleatória, com ingredientes, medidas e instruções de preparo."
     },
-    "link": "https://www.google.com/",
-    "github": "https://www.google.com/"
+    "link": "https://find-your-meal-site.netlify.app/"
   },
   {
     "name": {
-      "en": "Example · Calculator",
-      "pt": "Exemplo · Calculadora"
+      "en": "Cinthia G. Christino · Professional Website",
+      "pt": "Cinthia G. Christino · Site profissional"
     },
     "description": {
-      "en": "Demo project: a simple calculator. A short description and no GitHub link.",
-      "pt": "Projeto demonstrativo: uma calculadora simples. Descrição curta e sem link do GitHub."
+      "en": "Bilingual professional website built with React to present Cinthia G. Christino's translation, interpreting and English teaching services. Includes Portuguese and English content, animated sections and direct contact options.",
+      "pt": "Site profissional bilíngue desenvolvido com React para apresentar os serviços de tradução, interpretação e aulas de inglês de Cinthia G. Christino. Reúne conteúdo em português e inglês, seções animadas e opções de contato direto."
     },
-    "link": "https://www.google.com/"
+    "link": "https://cinthia-g-christino.netlify.app/"
   },
   {
     "name": {
-      "en": "Example · Product Catalog with Search and Category Filters",
-      "pt": "Exemplo · Catálogo de produtos com busca e filtros por categoria"
+      "en": "João Lemon · UX/UI Portfolio",
+      "pt": "João Lemon · Portfólio UX/UI"
     },
     "description": {
-      "en": "Demo project with a longer title and description: a product catalog for practicing responsive layouts, search, category filters and reusable interface elements. This entry helps preview how a more detailed early-career project will appear in the collection.",
-      "pt": "Projeto demonstrativo com título e descrição mais longos: um catálogo de produtos para praticar layouts responsivos, busca, filtros por categoria e elementos reutilizáveis de interface. Este item ajuda a visualizar como um projeto mais detalhado do início da carreira aparecerá na coleção."
+      "en": "Front-end portfolio implementation presenting João Lemon's UX/UI design work. Combines an animated introduction, a project slider and a quote request form using HTML, CSS and JavaScript.",
+      "pt": "Implementação front-end de um portfólio que apresenta o trabalho de design UX/UI de João Lemon. Combina introdução animada, slider de projetos e formulário de solicitação de orçamento usando HTML, CSS e JavaScript."
     },
-    "link": "https://www.google.com/",
-    "github": ""
+    "link": "https://portfoliojoaolemon.netlify.app/"
+  },
+  {
+    "name": {
+      "en": "Landing Page · HTML & CSS",
+      "pt": "Landing page · HTML e CSS"
+    },
+    "description": {
+      "en": "Single-page layout built with HTML and CSS, featuring anchor navigation, content sections, an image gallery, a pricing table and a contact form layout. An early project exploring page structure and visual composition.",
+      "pt": "Página única desenvolvida com HTML e CSS, com navegação por âncoras, seções de conteúdo, galeria de imagens, tabela de preços e layout de formulário de contato. Um projeto inicial de exploração de estrutura de páginas e composição visual."
+    },
+    "link": "https://erosfirstlandingpage.netlify.app/"
+  },
+  {
+    "name": {
+      "en": "React Posts · Searchable Feed",
+      "pt": "Posts React · Feed com busca"
+    },
+    "description": {
+      "en": "React study project that fetches posts and images from JSONPlaceholder and displays them in reusable cards. Includes title search and incremental loading, exploring API integration, component state and class-based components.",
+      "pt": "Projeto de estudo em React que busca posts e imagens da API JSONPlaceholder e os exibe em cards reutilizáveis. Inclui busca por título e carregamento incremental, explorando integração com API, estado e componentes de classe."
+    },
+    "link": "https://projeto-1-eros-react.netlify.app/"
   }
 ]

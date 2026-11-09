@@ -2,7 +2,7 @@
 
 ## Conteúdo dos projetos
 
-Edite `app/data/ai-assisted.json` e `app/data/legacy.json`. Cada arquivo contém um array de projetos; os cards aparecem automaticamente na respectiva página. Os arquivos incluem mocks identificados como exemplos, com conteúdo em português e inglês e links do Google. Substitua-os pelos seus projetos reais antes de publicar. Há exemplos com GitHub preenchido, omitido e vazio, além de títulos e descrições de tamanhos diferentes.
+Edite `app/data/ai-assisted.json` e `app/data/legacy.json`. Cada arquivo contém um array de projetos; os cards aparecem automaticamente na respectiva página. O Legacy contém cinco projetos reais importados do [portfólio antigo](https://eros-chagas-portfolio.netlify.app/), com nomes e descrições em português e inglês. Os links individuais de repositório foram omitidos porque não constavam na página de origem. O arquivo AI Assisted ainda inclui mocks identificados como exemplos, com links do Google, que devem ser substituídos antes de publicar.
 
 ```json
 [
