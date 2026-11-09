@@ -1,0 +1,66 @@
+{
+  "name": "SóCarrão",
+  "description": {
+    "en": "Vehicle listing platform connecting private sellers, dealerships and buyers. My work includes front-end development, code reviews and responsibility for code quality and architecture across the company's two systems, alongside platform maintenance, backend integration and the development of listing flows, internal management tools and the partner dealership area.",
+    "pt": "Plataforma de anúncios de veículos que conecta vendedores particulares, revendas e compradores. Minha atuação inclui desenvolvimento front-end, code review e responsabilidade pela qualidade do código e pela arquitetura dos dois sistemas da empresa, além de manutenção da plataforma, integração com o backend e desenvolvimento de fluxos de anúncios, ferramentas de gestão interna e área logada para revendas parceiras."
+  },
+  "start": "08/2024",
+  "end": "11/2026",
+  "projects": [
+    {
+      "id": "socarrao-front-end-development-code-review",
+      "name": {
+        "en": "Front-end Development and Code Review",
+        "pt": "Desenvolvimento Front-end e Code Review"
+      },
+      "description": {
+        "en": "Front-end development of new features, evolutionary maintenance and bug fixes across SóCarrão's two systems. In addition to writing code, I reviewed other developers' contributions and was responsible for code quality and architecture, focusing on organization, consistent development standards, scalability and maintainability.",
+        "pt": "Atuação como desenvolvedor front-end na implementação de novas funcionalidades, manutenção evolutiva e correção de bugs nos dois sistemas da SóCarrão. Além de escrever código, realizava code review das contribuições de outros desenvolvedores e era responsável pela qualidade do código e pela arquitetura, com foco em organização, padronização, escalabilidade e manutenibilidade."
+      }
+    },
+    {
+      "id": "socarrao-private-seller-listings",
+      "name": {
+        "en": "Private Seller Listings",
+        "pt": "Anunciante Particular SóCarrão"
+      },
+      "description": {
+        "en": "Development of a new vehicle listing structure for private sellers, using reusable components and a more robust architecture. The implementation introduced more direct and efficient communication with the backend, improving performance and maintainability while establishing a foundation for evolving the listing experience.",
+        "pt": "Desenvolvimento de uma nova estrutura de anúncios de veículos voltada a pessoas físicas, utilizando componentes reutilizáveis e uma arquitetura mais robusta. A implementação trouxe uma comunicação mais direta e eficiente com o backend, melhorando o desempenho e a manutenibilidade e criando uma base para a evolução da experiência de anúncio."
+      }
+    },
+    {
+      "id": "socarrao-backend-architecture-migration",
+      "name": {
+        "en": "Front-end Migration to the New Backend Architecture",
+        "pt": "Adaptação à Nova Arquitetura de Backend"
+      },
+      "description": {
+        "en": "Complete adaptation of the website's front end to a new backend architecture, including updated API routes and response structures. Existing endpoint integrations were refactored for compatibility with the new API, with a focus on maintaining platform stability throughout the transition.",
+        "pt": "Adaptação completa do front-end do site a uma nova arquitetura de backend, com atualização de rotas e estruturas de retorno da API. As integrações com os endpoints antigos foram refatoradas para compatibilidade com a nova API, com foco em manter a estabilidade da plataforma durante a transição."
+      }
+    },
+    {
+      "id": "socarrao-internal-management-platform",
+      "name": {
+        "en": "Internal Management Platform",
+        "pt": "Sistema de Gerenciamento Interno SóCarrão"
+      },
+      "description": {
+        "en": "Development of an internal system for managing users, vehicles and registration records within the platform's new architecture. The tool supports maintenance, editing and control of administrative data that is not accessible to end users, bringing internal management workflows into a dedicated interface.",
+        "pt": "Desenvolvimento de um sistema interno para gerenciamento de usuários, veículos e cadastros na nova arquitetura da plataforma. A ferramenta apoia a manutenção, edição e controle de dados administrativos não acessíveis aos usuários finais, reunindo os fluxos de gestão interna em uma interface dedicada."
+      }
+    },
+    {
+      "id": "socarrao-dealership-portal",
+      "name": {
+        "en": "Partner Dealership Portal",
+        "pt": "Área Logada SóCarrão"
+      },
+      "description": {
+        "en": "Development of the authenticated area for SóCarrão's partner dealerships. Features include a dashboard with performance charts and statistics, vehicle creation and management, featured listing management, financial information and boleto payments. The portal also provides access to vehicles advertised by private users and tools for managing leads.",
+        "pt": "Desenvolvimento da área logada destinada às revendas parceiras da SóCarrão. As funcionalidades incluem dashboard com gráficos e estatísticas de desempenho, cadastro e gestão de veículos e seus respectivos destaques, consulta de informações financeiras e pagamento de boletos. O portal também permite visualizar veículos anunciados por usuários e gerenciar leads."
+      }
+    }
+  ]
+}

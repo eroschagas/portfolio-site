@@ -28,6 +28,8 @@ Durante `npm run dev`, alterações nos arquivos são recarregadas. Em produçã
 
 Cada JSON em `app/data/work/` gera automaticamente um card em `/work`. O nome do arquivo define a rota da empresa: `econet.json` abre `/work/econet`. Esse arquivo contém a experiência real na Econet Editora (07/2022 a 08/2024, período confirmado pelo autor) e 12 projetos com nomes e descrições bilíngues baseados nas informações fornecidas pelo autor. A apresentação da empresa foi resumida a partir do [site institucional](https://grupo.econeteditora.com.br/sobre-econet.html). As empresas fictícias e suas imagens foram removidas. Os projetos sem imagens não exibem galeria; para adicioná-las, use os respectivos IDs em `public/work/<id>/`.
 
+`socarrao.json` contém a experiência na SóCarrão (08/2024 a 11/2026, período confirmado pelo autor), com cinco itens bilíngues: responsabilidade técnica front-end, anúncios para particulares, adaptação à nova arquitetura de backend, gerenciamento interno e área logada para revendas. O conteúdo foi elaborado a partir das informações fornecidas pelo autor, sem adicionar projetos não confirmados. A página fica em `/work/socarrao`.
+
 ```json
 {
   "name": { "en": "Company name", "pt": "Nome da empresa" },
@@ -60,7 +62,7 @@ Em empresas e projetos de Work, `name` aceita um objeto com `pt` e `en` ou uma s
 
 Coloque as imagens diretamente em `public/work/<id>/`, por exemplo `public/work/customer-portal/01-home.png`. Não é necessário listar imagens no JSON. São aceitos PNG, JPG/JPEG, WebP, AVIF, GIF e SVG, ordenados pelo nome do arquivo; use prefixos como `01-`, `02-` e `03-` para controlar a ordem. Subpastas e arquivos que não são imagens são ignorados.
 
-A lista de imagens é gerada ao iniciar o Nuxt ou gerar o build. Reinicie `npm run dev` após adicionar/remover imagens ou pastas; em produção, gere e publique um novo build. Uma pasta ausente ou sem imagens não gera galeria. Junto à descrição, as miniaturas aparecem lado a lado: até três em áreas maiores que 900 px, duas entre 561 e 900 px e uma em áreas de até 560 px. Havendo imagens restantes, um card `+N` mostra a quantidade não exibida. Clique em uma miniatura para abrir o carrossel ampliado naquela imagem; o card `+N` abre a primeira imagem oculta. No modal, há navegação circular por botões, setas do teclado e gesto horizontal de toque. Feche com Escape, botão de fechar ou clique no fundo. Uma imagem única não exibe contador de extras nem setas no modal.
+A lista de imagens é gerada ao iniciar o Nuxt ou gerar o build. Em desenvolvimento, adicionar ou remover arquivos em `public/work` faz o Nuxt reiniciar automaticamente e atualizar a galeria, sem reinício manual. Em produção, gere e publique um novo build. Uma pasta ausente ou sem imagens não gera galeria. Junto à descrição, as miniaturas aparecem lado a lado: até três em áreas maiores que 900 px, duas entre 561 e 900 px e uma em áreas de até 560 px. Havendo imagens restantes, um card `+N` mostra a quantidade não exibida. Clique em uma miniatura para abrir o carrossel ampliado naquela imagem; o card `+N` abre a primeira imagem oculta. No modal, há navegação circular por botões, setas do teclado e gesto horizontal de toque. Feche com Escape, botão de fechar ou clique no fundo. Uma imagem única não exibe contador de extras nem setas no modal.
 
 Validação: `node --experimental-strip-types --test tests/work-models.test.mjs`. Após `npm run build`, execute `npm exec --yes --package=playwright -- node tests/work-gallery.mjs` com Google Chrome instalado para testar a navegação e o modal.
 
@@ -80,7 +82,7 @@ Valide a resolução do idioma com `node --experimental-strip-types --test tests
 
 ### Responsive regression check
 
-After `npm run build`, run `npm exec --yes --package=playwright -- node tests/responsive.mjs` with Google Chrome installed. The audit checks the four main pages and Econet in both languages at 11 widths from 360 to 1920 px, including horizontal overflow, header spacing, fixed positioning, and browser runtime errors. Playwright runs temporarily without changing the project dependencies.
+After `npm run build`, run `npm exec --yes --package=playwright -- node tests/responsive.mjs` with Google Chrome installed. The audit checks the four main pages, Econet and SóCarrão in both languages at 11 widths from 360 to 1920 px, including horizontal overflow, header spacing, fixed positioning, and browser runtime errors. Playwright runs temporarily without changing the project dependencies.
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 

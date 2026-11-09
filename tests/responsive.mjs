@@ -52,6 +52,7 @@ class ResponsiveAudit {
             "/work",
             "/legacy",
             "/work/econet",
+            "/work/socarrao",
           ]) {
             await page.goto(`http://127.0.0.1:3088${route}`);
             await page.evaluate(() => document.fonts.ready);
@@ -116,7 +117,7 @@ class ResponsiveAudit {
         process.exitCode = 1;
       } else {
         console.log(
-          "110 responsive checks passed: 5 routes, 11 widths (360–1920px), both languages; fixed header, no horizontal overflow or runtime errors.",
+          "132 responsive checks passed: 6 routes, 11 widths (360–1920px), both languages; fixed header, no horizontal overflow or runtime errors.",
         );
       }
     } finally {

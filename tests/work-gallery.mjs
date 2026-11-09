@@ -50,7 +50,11 @@ class WorkGalleryAudit {
         await page.waitForFunction(
           () => !!document.querySelector("#__nuxt")?.__vue_app__,
         );
-        assert.equal(await page.locator(".work-company-card").count(), 1);
+        assert.equal(await page.locator(".work-company-card").count(), 2);
+        assert.equal(
+          await page.locator(".work-company-card").first().getAttribute("href"),
+          "/work/socarrao",
+        );
         await page.locator('.work-company-card[href="/work/econet"]').click();
         await page.waitForURL("**/work/econet");
         assert.equal(
@@ -110,6 +114,34 @@ class WorkGalleryAudit {
             await page.locator(".work-project h2").first().textContent()
           ).includes(company.projects[0].name[language === "en" ? "pt" : "en"]),
         );
+        const socarrao = JSON.parse(
+          fs.readFileSync("app/data/work/socarrao.json", "utf8"),
+        );
+        await page.goto("http://127.0.0.1:3089/work/socarrao");
+        assert.equal(
+          await page.locator(".work-project").count(),
+          socarrao.projects.length,
+        );
+        const socarraoPeriod = await page
+          .locator(".company-detail > .work-period")
+          .textContent();
+        assert.ok(
+          socarraoPeriod.includes(socarrao.start) &&
+            socarraoPeriod.includes(socarrao.end),
+        );
+        const selectedLanguage = language === "en" ? "pt" : "en";
+        for (const project of socarrao.projects) {
+          assert.equal(
+            await page.locator(`#${project.id} h2`).textContent(),
+            project.name[selectedLanguage],
+          );
+          assert.equal(
+            await page
+              .locator(`#${project.id} .work-project__description`)
+              .textContent(),
+            project.description[selectedLanguage],
+          );
+        }
         for (const slug of [
           "aurora-studio",
           "northstar-labs",
@@ -123,7 +155,7 @@ class WorkGalleryAudit {
         assert.deepEqual(errors, []);
         await context.close();
         console.log(
-          `${language}: Econet navigation, projects, dates, galleries when available, language switch and removed-company 404s passed`,
+          `${language}: Econet and SóCarrão navigation, projects, dates, ordering, galleries when available, language switch and removed-company 404s passed`,
         );
       }
     } finally {

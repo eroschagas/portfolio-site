@@ -45,6 +45,7 @@ class LanguageRoutingAudit {
         "/work",
         "/legacy",
         "/work/econet",
+        "/work/socarrao",
       ]) {
         for (const scenario of scenarios) {
           const response = await fetch(this.origin + route + scenario.query, {
@@ -76,7 +77,7 @@ class LanguageRoutingAudit {
             );
         }
       }
-      console.log("40 server-rendered language and cookie scenarios passed");
+      console.log("48 server-rendered language and cookie scenarios passed");
       browser = await chromium.launch({ channel: "chrome", headless: true });
       const context = await browser.newContext();
       const page = await context.newPage();
