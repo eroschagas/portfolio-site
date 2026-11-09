@@ -1,8 +1,5 @@
 {
-  "name": {
-    "en": "Econet Editora",
-    "pt": "Econet Editora"
-  },
+  "name": "Econet Editora",
   "description": {
     "en": "Brazilian publisher and consultancy specializing in tax, accounting, labor, social security and foreign trade information. Its digital solutions include legal updates, advisory services, professional training and calculation tools. My contributions covered customer-facing platforms, tax and payroll calculators, internal workflows and management dashboards.",
     "pt": "Editora e consultoria brasileira especializada em informações tributárias, fiscais, contábeis, trabalhistas, previdenciárias e de comércio exterior. Suas soluções digitais incluem atualizações legais, suporte consultivo, formação profissional e ferramentas de cálculo. Minha atuação envolveu plataformas para clientes, calculadoras tributárias e trabalhistas, fluxos internos e painéis de gestão."
@@ -123,7 +120,7 @@
     {
       "id": "econet-lista-st",
       "name": {
-        "en": "Lista ST · ICMS-ST Tools and NCM Search",
+        "en": "ST Tax List · ICMS-ST Tools and NCM Search",
         "pt": "Lista ST · Ferramentas ICMS-ST e Consulta de NCM"
       },
       "description": {

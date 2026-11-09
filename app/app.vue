@@ -4,8 +4,8 @@
     <SiteHeader />
     <div class="portfolio">
       <main><NuxtPage /></main>
-      <SiteFooter />
     </div>
+    <SiteFooter />
   </div>
 </template>
 

@@ -480,7 +480,12 @@ h3,
 }
 .footer {
   border-top: 1px solid var(--border);
-  padding: 35px 0;
+  width: 100%;
+}
+.footer__content {
+  max-width: 1440px;
+  margin: auto;
+  padding: 35px 6.25%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -513,7 +518,7 @@ h3,
   color: var(--muted);
   font-size: 11px;
 }
-.footer > p {
+.footer__content > p {
   text-align: right;
 }
 .collection {
@@ -585,7 +590,8 @@ h3,
   .brand small {
     display: none;
   }
-  .portfolio {
+  .portfolio,
+  .footer__content {
     padding-inline: 5%;
   }
   .hero {
@@ -608,7 +614,7 @@ h3,
     padding: 20px 12px;
     font-size: 10px;
   }
-  .footer {
+  .footer__content {
     flex-wrap: wrap;
   }
   .project-card {
@@ -734,19 +740,19 @@ h3,
     min-height: 0;
     max-width: 100%;
   }
-  .footer {
+  .footer__content {
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
-    padding: 28px 0;
+    padding-block: 28px;
   }
-  .footer > div:first-child {
+  .footer__content > div:first-child {
     width: 100%;
   }
   .footer__links {
     gap: 16px;
   }
-  .footer > p {
+  .footer__content > p {
     text-align: left;
   }
   .collection {
