@@ -6,8 +6,9 @@
     </p>
     <h1>{{ category.name }}<span>.</span></h1>
     <p class="collection__description">{{ category.description }}</p>
+    <WorkCompanyGrid v-if="route.params.collection === 'work'" />
     <ProjectGrid
-      v-if="!projectCollection.isEmpty"
+      v-else-if="!projectCollection.isEmpty"
       :collection="projectCollection"
     />
     <div v-else class="collection__empty">
@@ -23,6 +24,7 @@
 
 <script setup lang="ts">
 import ProjectGrid from "~/components/projects/ProjectGrid.vue";
+import WorkCompanyGrid from "~/components/work/WorkCompanyGrid.vue";
 import { ProjectRepository } from "~/services/ProjectRepository";
 import { profile } from "~/data/profile";
 const route = useRoute();

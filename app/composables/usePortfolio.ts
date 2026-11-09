@@ -1,5 +1,23 @@
 const translations = {
   pt: {
+    workContent: {
+      projects: "Projetos",
+      period: "Período de trabalho",
+      present: "Atual",
+      project: "Projeto",
+      viewProjects: "Ver projetos",
+      back: "Voltar para experiências",
+      gallery: "Galeria",
+      carousel: "carrossel",
+      image: "Imagem",
+      enlarge: "Ampliar imagem",
+      moreImages: "mais imagens",
+      previous: "Imagem anterior",
+      next: "Próxima imagem",
+      close: "Fechar galeria",
+      noProjects: "Os projetos desta empresa serão adicionados em breve.",
+      notFound: "Empresa não encontrada.",
+    },
     header: {
       home: "Início",
       aiAssisted: "Com IA",
@@ -52,6 +70,24 @@ const translations = {
     codeLearning: "Sempre",
   },
   en: {
+    workContent: {
+      projects: "Projects",
+      period: "Employment period",
+      present: "Present",
+      project: "Project",
+      viewProjects: "View projects",
+      back: "Back to work",
+      gallery: "Gallery",
+      carousel: "carousel",
+      image: "Image",
+      enlarge: "Enlarge image",
+      moreImages: "more images",
+      previous: "Previous image",
+      next: "Next image",
+      close: "Close gallery",
+      noProjects: "Projects for this company will be added soon.",
+      notFound: "Company not found.",
+    },
     header: {
       home: "Home",
       aiAssisted: "AI Assisted",

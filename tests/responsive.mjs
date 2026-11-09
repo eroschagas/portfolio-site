@@ -46,7 +46,15 @@ class ResponsiveAudit {
           360, 375, 390, 414, 540, 767, 768, 820, 1024, 1440, 1920,
         ]) {
           await page.setViewportSize({ width, height: 844 });
-          for (const route of ["/", "/ai-assisted", "/work", "/legacy"]) {
+          for (const route of [
+            "/",
+            "/ai-assisted",
+            "/work",
+            "/legacy",
+            "/work/aurora-studio",
+            "/work/northstar-labs",
+            "/work/econet",
+          ]) {
             await page.goto(`http://127.0.0.1:3088${route}`);
             await page.evaluate(() => document.fonts.ready);
             const result = await page.evaluate(() => {
@@ -110,7 +118,7 @@ class ResponsiveAudit {
         process.exitCode = 1;
       } else {
         console.log(
-          "88 responsive checks passed: 4 routes, 11 widths (360–1920px), both languages; fixed header, no horizontal overflow or runtime errors.",
+          "154 responsive checks passed: 7 routes, 11 widths (360–1920px), both languages; fixed header, no horizontal overflow or runtime errors.",
         );
       }
     } finally {

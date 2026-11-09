@@ -105,10 +105,12 @@ h2 {
   color: var(--muted);
 }
 .header nav a:hover,
-.header nav .router-link-active {
+.header nav .router-link-active,
+.header nav .header__link--active {
   color: var(--text);
 }
-.header nav .router-link-active:after {
+.header nav .router-link-active:after,
+.header nav .header__link--active:after {
   content: "";
   position: absolute;
   bottom: 4px;

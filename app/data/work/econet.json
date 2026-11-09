@@ -1,0 +1,146 @@
+{
+  "name": {
+    "en": "Econet Editora",
+    "pt": "Econet Editora"
+  },
+  "description": {
+    "en": "Brazilian publisher and consultancy specializing in tax, accounting, labor, social security and foreign trade information. Its digital solutions include legal updates, advisory services, professional training and calculation tools. My contributions covered customer-facing platforms, tax and payroll calculators, internal workflows and management dashboards.",
+    "pt": "Editora e consultoria brasileira especializada em informações tributárias, fiscais, contábeis, trabalhistas, previdenciárias e de comércio exterior. Suas soluções digitais incluem atualizações legais, suporte consultivo, formação profissional e ferramentas de cálculo. Minha atuação envolveu plataformas para clientes, calculadoras tributárias e trabalhistas, fluxos internos e painéis de gestão."
+  },
+  "start": "07/2022",
+  "end": "08/2024",
+  "projects": [
+    {
+      "id": "econet-revisor-tributario",
+      "name": {
+        "en": "Revisor Tributário Econet · Tax Review Platform",
+        "pt": "Revisor Tributário Econet"
+      },
+      "description": {
+        "en": "Feature implementation and bug fixes for Econet's tax review platform, covering taxes across Brazil. The application uses Vue.js on the front end, a Lumen/Laravel API and a MySQL database. Its technology stack also includes Vuex, Vuetify and Bootstrap, with source control managed through GitLab.",
+        "pt": "Implementações de funcionalidades e correções de bugs na plataforma de revisão tributária da Econet, que contempla tributos em âmbito nacional. A aplicação utiliza Vue.js no front-end, API em Lumen/Laravel e banco de dados MySQL. A stack também inclui Vuex, Vuetify e Bootstrap, com versionamento de código no GitLab."
+      }
+    },
+    {
+      "id": "econet-area-do-cliente",
+      "name": {
+        "en": "Econet Customer Area",
+        "pt": "Área do Cliente Econet"
+      },
+      "description": {
+        "en": "Restructuring of the legacy customer area into a monolithic application designed to accommodate new features. The interface was implemented from a completely new design, with a collapsible sidebar and sections for the customer dashboard, account, subscription payments, support, Econet journey, solutions and consulting. Four access configurations were provided according to each customer's contract.",
+        "pt": "Reestruturação da área do cliente legada em uma aplicação monolítica preparada para receber novas funcionalidades. A interface foi implementada a partir de um design completamente novo, com menu lateral retrátil e seções de painel do cliente, conta, mensalidade, atendimento, jornada Econet, soluções e consultoria. Foram contempladas quatro configurações de acesso conforme o contrato de cada cliente."
+      }
+    },
+    {
+      "id": "econet-indique-e-ganhe",
+      "name": {
+        "en": "Indique e Ganhe · Customer Referral Program",
+        "pt": "Indique e Ganhe"
+      },
+      "description": {
+        "en": "Implementation of a customer referral section within the Econet customer area. Customers can accumulate points by referring new clients and redeem them for courses offered by Econet Educacional, connecting the referral program to the company's educational services.",
+        "pt": "Implementação de uma seção de indicações na área do cliente Econet. Os clientes podem acumular pontos ao indicar novos clientes e trocá-los por cursos disponibilizados pelo Econet Educacional, conectando o programa de indicações aos serviços educacionais da empresa."
+      }
+    },
+    {
+      "id": "econet-cursos-modulares",
+      "name": {
+        "en": "Modular Courses",
+        "pt": "Cursos Modulares"
+      },
+      "description": {
+        "en": "Implementation spanning the customer area and a separate internal course management application. Customers gained a searchable course catalog, favorites and individual course completion tracking. The internal application covered the workflow between teams for creating, approving, reviewing and publishing new courses.",
+        "pt": "Implementação que envolveu a área do cliente e uma aplicação interna separada para gestão de cursos. Os clientes passaram a contar com catálogo de cursos, filtros de pesquisa, favoritos e acompanhamento individual de conclusão. Na aplicação interna, foi desenvolvido o fluxo entre as áreas responsáveis pela criação, aprovação, revisão e publicação de novos cursos."
+      }
+    },
+    {
+      "id": "econet-calculadora-simples-nacional",
+      "name": {
+        "en": "Simples Nacional Tax Calculator",
+        "pt": "Calculadora Simples Nacional"
+      },
+      "description": {
+        "en": "Development of a calculator for Brazil's Simples Nacional tax regime. In addition to tax calculations, the tool includes alerts related to eligibility and classification within the regime, bringing calculation results and relevant classification warnings together in one interface.",
+        "pt": "Desenvolvimento de uma calculadora para o regime do Simples Nacional. Além dos cálculos de tributação, a ferramenta inclui alertas relacionados ao enquadramento na categoria, reunindo os resultados dos cálculos e os avisos pertinentes em uma mesma interface."
+      }
+    },
+    {
+      "id": "econet-calculadora-icms-monofasico",
+      "name": {
+        "en": "Single-Phase ICMS Calculator",
+        "pt": "Calculadora ICMS Monofásico"
+      },
+      "description": {
+        "en": "Development of a calculator for single-phase ICMS taxation. Users can search for goods by NCM classification and select the operation and issuer, including differentiated treatment and tax deferral when applicable. Input fields are displayed dynamically according to the relevant rules.",
+        "pt": "Desenvolvimento de uma calculadora de ICMS monofásico. A ferramenta permite pesquisar mercadorias por NCM e selecionar a operação e o emissor, incluindo tratamento diferenciado e diferimento quando aplicáveis. Os campos de entrada são exibidos dinamicamente conforme as regras pertinentes."
+      }
+    },
+    {
+      "id": "econet-validador-de-rubricas",
+      "name": {
+        "en": "Payroll Item Validator",
+        "pt": "Validador de Rubricas"
+      },
+      "description": {
+        "en": "Development of a payroll item validation tool that accepts individual XML files or multiple files in a ZIP archive. Uploaded data is compared against Econet's database, with discrepancies presented in expandable panels. Submitted files remain associated with the user who uploaded them for later access.",
+        "pt": "Desenvolvimento de uma ferramenta de validação de rubricas que recebe arquivos XML individuais ou múltiplos arquivos em um ZIP. Os dados enviados são comparados com a base da Econet, e as discrepâncias são apresentadas em painéis expansíveis. Os arquivos ficam associados ao usuário responsável pelo envio para consulta posterior."
+      }
+    },
+    {
+      "id": "econet-calculadora-horas-extras-adicional-noturno",
+      "name": {
+        "en": "Overtime and Night Shift Premium Calculator",
+        "pt": "Calculadora de Horas Extras e Adicional Noturno"
+      },
+      "description": {
+        "en": "Front-end development of a payroll calculator covering overtime, overtime on days off, nighttime overtime and night shift premiums. The tool converts between worked and contracted hours and supports urban and rural workers, with monthly, hourly, commission-only and mixed-commission employment arrangements.",
+        "pt": "Desenvolvimento no front-end de uma calculadora trabalhista para horas extras, horas extras em dias de folga, horas extras noturnas e adicional noturno. A ferramenta converte horas trabalhadas em horas contratadas e vice-versa, contemplando trabalhadores urbanos e rurais e os regimes de mensalista, horista, comissionista puro e comissionista misto."
+      }
+    },
+    {
+      "id": "econet-dashboard-gdi",
+      "name": {
+        "en": "GDI · Individual Performance Dashboard",
+        "pt": "Dashboard GDI · Desempenho Individual"
+      },
+      "description": {
+        "en": "Development of a dashboard with tables and charts for Econet's Individual Performance Bonus (GDI). The system offers four views based on user access level and allows HR staff and managers to carry out actions such as waiving absence penalties and managing disciplinary sanctions.",
+        "pt": "Desenvolvimento de um dashboard com tabelas e gráficos de desempenho relacionados à Gratificação por Desempenho Individual (GDI) da Econet. O sistema oferece quatro visualizações conforme o nível de acesso do usuário e permite ações do RH e de gestores, como abono de penalidades por falta e gestão de sanções disciplinares."
+      }
+    },
+    {
+      "id": "econet-express",
+      "name": {
+        "en": "Econet Express · Tax Update Publishing",
+        "pt": "Econet Express · Publicação de Atualizações Tributárias"
+      },
+      "description": {
+        "en": "Contribution to a tool for preparing tax rule updates for publication on Econet's website and automatic email delivery. The interface dynamically builds HTML from user-created blocks that can be rearranged through a kanban board. The project was still in development when my involvement ended.",
+        "pt": "Participação no desenvolvimento de uma ferramenta para preparar atualizações de regras tributárias destinadas ao site da Econet e ao envio automático por e-mail. A interface constrói HTML dinamicamente a partir de blocos criados pelo usuário, que podem ser reorganizados por meio de um kanban. O projeto ainda estava em desenvolvimento ao final da minha participação."
+      }
+    },
+    {
+      "id": "econet-lista-st",
+      "name": {
+        "en": "Lista ST · ICMS-ST Tools and NCM Search",
+        "pt": "Lista ST · Ferramentas ICMS-ST e Consulta de NCM"
+      },
+      "description": {
+        "en": "Contribution to an application that lists Econet tools by Brazilian state using the ICMS-ST database. It also provides state-based NCM searches within the ICMS tax substitution and advance payment databases. The project was still in development when my involvement ended.",
+        "pt": "Participação no desenvolvimento de uma aplicação que lista, por estado, as ferramentas da Econet que utilizam a base de ICMS-ST. Também contempla a consulta de NCM nas bases de substituição tributária e antecipação de ICMS por estado. O projeto ainda estava em desenvolvimento ao final da minha participação."
+      }
+    },
+    {
+      "id": "econet-cadastro-migracao-base-dados",
+      "name": {
+        "en": "Database Registration and Migration",
+        "pt": "Cadastro e Migração da Base de Dados"
+      },
+      "description": {
+        "en": "Contribution to an internal database management project, focused on editing records and listing existing data through filters. The interface supports data maintenance and consultation workflows. The project was still in development when my involvement ended.",
+        "pt": "Participação em um projeto interno de gestão da base de dados, voltado à edição de registros e à listagem dos dados existentes por meio de filtros. A interface dá suporte aos fluxos de manutenção e consulta das informações. O projeto ainda estava em desenvolvimento ao final da minha participação."
+      }
+    }
+  ]
+}
