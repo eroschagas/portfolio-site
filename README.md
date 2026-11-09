@@ -2,7 +2,7 @@
 
 ## Conteúdo dos projetos
 
-Edite `app/data/ai-assisted.json` e `app/data/legacy.json`. Cada arquivo contém um array de projetos; os cards aparecem automaticamente na respectiva página. O Legacy contém cinco projetos reais importados do [portfólio antigo](https://eros-chagas-portfolio.netlify.app/), com nomes e descrições em português e inglês. Os links individuais de repositório foram omitidos porque não constavam na página de origem. O arquivo AI Assisted ainda inclui mocks identificados como exemplos, com links do Google, que devem ser substituídos antes de publicar.
+Edite `app/data/ai-assisted.json` e `app/data/legacy.json`. Cada arquivo contém um array de projetos; os cards aparecem automaticamente na respectiva página. O Legacy contém cinco projetos reais importados do [portfólio antigo](https://eros-chagas-portfolio.netlify.app/), com nomes e descrições em português e inglês. Os links individuais de repositório foram omitidos porque não constavam na página de origem. AI Assisted contém o [File Manager](https://github.com/eroschagas/file-manager), com descrição bilíngue baseada no README do repositório, link para o download de Windows indicado nele e link para o código-fonte. Os mocks foram removidos.
 
 ```json
 [
