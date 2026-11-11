@@ -4,7 +4,7 @@
       <span>{{ String(props.index + 1).padStart(2, "0") }}</span
       ><span aria-hidden="true">↗</span>
     </div>
-    <h3 class="project-card__name">{{ props.project.getName(language) }}</h3>
+    <h2 class="project-card__name">{{ props.project.getName(language) }}</h2>
     <p>{{ props.project.getDescription(language) }}</p>
     <div class="project-card__actions">
       <a

@@ -460,10 +460,12 @@ h3,
   color: #e7bf91;
   background: radial-gradient(ellipse, #e7bf910d, transparent 65%);
 }
-.project-card h3 {
+.project-card h3,
+.project-card__name {
   font-size: 23px;
   font-weight: 500;
   letter-spacing: -0.6px;
+  line-height: normal;
 }
 .project-card p {
   font-size: 12px;
