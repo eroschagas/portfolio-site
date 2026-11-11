@@ -16,3 +16,19 @@ const props = defineProps({
   collection: { type: ProjectCollection, required: true },
 });
 </script>
+
+<style scoped lang="scss">
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 34px;
+}
+@media (max-width: 767px) {
+  .projects__grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 25px;
+    gap: 16px;
+  }
+}
+</style>

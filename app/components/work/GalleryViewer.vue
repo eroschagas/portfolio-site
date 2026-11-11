@@ -123,7 +123,7 @@ const onTouchEnd = (event: TouchEvent) => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .gallery-viewer {
   min-width: 0;
 }

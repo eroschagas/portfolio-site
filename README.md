@@ -68,11 +68,15 @@ Validação: `node --experimental-strip-types --test tests/work-models.test.mjs`
 
 - `app/components/layout`: header, seletor de idioma e footer.
 - `app/components/home`: seções independentes da home.
+- `app/components/home/HomeCollectionCard.vue` e `HomeCodeArtwork.vue`: card de navegação e ilustração da home em SFCs próprios.
 - `app/components/projects`: grid e card de projeto reutilizáveis.
 - `app/models`: classes `Project`, `ProjectCollection` e `PortfolioProfile`, responsáveis pelos dados e comportamento do domínio.
 - `app/services/ProjectRepository.ts`: leitura dos JSONs e criação das coleções de objetos.
+- `CollectionCategory`, `CollectionRepository` e `useCollections`: definição tipada e compartilhada das categorias usadas na home e nas páginas de coleção.
 - `app/pages`: composição das telas e integração com as rotas.
-- `app/composables/usePortfolio.ts`: traduções e estado reativo do idioma, integrado à Composition API do Vue.
+- `app/data/translations.ts`: catálogo de traduções; `app/composables/usePortfolio.ts` integra o catálogo ao estado reativo do idioma.
+- `app/composables/useGalleryDialog.ts`: integração do modal com o estado do carrossel, pré-carregamento, bloqueio da rolagem e limpeza no ciclo de vida.
+- Os componentes usam SFCs com `<script setup lang="ts">` e estilos SCSS locais com `scoped`. `app/assets/main.scss` mantém fontes, variáveis, resets e utilitários compartilhados; os mixins em `app/assets/styles` reutilizam a apresentação dos cards e das coleções sem depender de estilos globais de componentes.
 
 Personalize nome, stack e redes sociais em `app/data/profile.ts`. O parâmetro global `?lang=pt` ou `?lang=en` define o idioma em qualquer página e atualiza o cookie `portfolio-language`. Sem um parâmetro válido, usa-se a preferência do cookie; se não houver uma preferência válida, o cookie é criado em inglês. Por exemplo: `/work/econet?lang=pt`. Valores inválidos ou parâmetros `lang` repetidos são ignorados. O switch também atualiza o parâmetro quando ele já está na URL, preservando outros parâmetros e o fragmento. Sem `lang` na URL, o switch altera apenas a preferência salva. O header ocupa a largura da janela e fica fixo durante a rolagem.
 

@@ -34,3 +34,8 @@ const props = defineProps({
 });
 const { language, t } = usePortfolio();
 </script>
+
+<style scoped lang="scss">
+@use "~/assets/styles/project-card";
+@include project-card.card;
+</style>

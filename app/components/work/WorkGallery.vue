@@ -49,8 +49,7 @@
 
 <script setup lang="ts">
 import type { PropType } from "vue";
-import { ImageCarouselState } from "~/models/ImageCarouselState";
-import { GalleryImageLoader } from "~/services/GalleryImageLoader";
+import { useGalleryDialog } from "~/composables/useGalleryDialog";
 import GalleryViewer from "./GalleryViewer.vue";
 import GalleryPreview from "./GalleryPreview.vue";
 const props = defineProps({
@@ -58,56 +57,11 @@ const props = defineProps({
   title: { type: String, required: true },
 });
 const { t } = usePortfolio();
-const carousel = reactive(new ImageCarouselState(props.images.length));
-const dialog = ref<HTMLDialogElement | null>(null);
-const isOpen = ref(false);
-const imageLoader = new GalleryImageLoader();
-let previousOverflow: string | null = null;
-const open = (index: number) => {
-  if (!dialog.value || dialog.value.open) return;
-  carousel.select(index);
-  isOpen.value = true;
-  imageLoader.preload(props.images, carousel.index);
-  previousOverflow = document.body.style.overflow;
-  document.body.style.overflow = "hidden";
-  dialog.value.showModal();
-};
-const close = () => dialog.value?.close();
-const onClose = () => {
-  isOpen.value = false;
-  if (previousOverflow !== null) {
-    document.body.style.overflow = previousOverflow;
-    previousOverflow = null;
-  }
-};
-const onBackdropClick = (event: MouseEvent) => {
-  const element = dialog.value;
-  if (!element || event.target !== element) return;
-  const rect = element.getBoundingClientRect();
-  if (
-    event.clientX < rect.left ||
-    event.clientX > rect.right ||
-    event.clientY < rect.top ||
-    event.clientY > rect.bottom
-  )
-    close();
-};
-watch(
-  () => props.images,
-  (images) => {
-    close();
-    carousel.reset(images.length);
-    imageLoader.clear();
-  }
-);
-onBeforeUnmount(() => {
-  close();
-  onClose();
-  imageLoader.clear();
-});
+const { carousel, dialog, isOpen, open, close, onClose, onBackdropClick } =
+  useGalleryDialog(() => props.images);
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .work-gallery {
   margin-top: 26px;
   min-width: 0;

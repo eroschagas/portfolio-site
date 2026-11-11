@@ -47,7 +47,10 @@ useSeoMeta({
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use "~/assets/styles/collection";
+@include collection.layout;
+
 .company-detail h1 {
   font-size: clamp(36px, 5vw, 64px);
   letter-spacing: -2px;

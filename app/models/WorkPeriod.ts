@@ -38,10 +38,11 @@ export class WorkPeriod {
   private getMonthIndex(value: string): number {
     if (!/^(0[1-9]|1[0-2])\/[1-9]\d{3}$/.test(value)) {
       throw new Error(
-        "Work dates must use MM/YYYY with a valid month and year.",
+        "Work dates must use MM/YYYY with a valid month and year."
       );
     }
-    const [month, year] = value.split("/").map(Number);
+    const month = Number(value.slice(0, 2));
+    const year = Number(value.slice(3));
     return year * 12 + month;
   }
 

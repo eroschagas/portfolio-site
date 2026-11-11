@@ -2,12 +2,13 @@ import { fileURLToPath } from "node:url";
 import { WorkImageManifest } from "./build/WorkImageManifest";
 
 const workImagesDirectory = fileURLToPath(
-  new URL("./public/work", import.meta.url),
+  new URL("./public/work", import.meta.url)
 );
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
+  css: ["~/assets/main.scss"],
   watch: [workImagesDirectory, /(?:^|[\\/])public[\\/]work(?:[\\/]|$)/],
   runtimeConfig: {
     public: {

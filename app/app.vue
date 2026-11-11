@@ -34,6 +34,15 @@ useHead(() => ({
 }));
 </script>
 
-<style>
-@import "~/assets/main.css";
+<style scoped lang="scss">
+.portfolio {
+  max-width: 1440px;
+  margin: auto;
+  padding: var(--header-height) 6.25% 0;
+}
+@media (max-width: 1000px) {
+  .portfolio {
+    padding-inline: 5%;
+  }
+}
 </style>

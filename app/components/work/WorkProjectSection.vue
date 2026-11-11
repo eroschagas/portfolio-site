@@ -27,12 +27,10 @@ const props = defineProps({
 const { language, t } = usePortfolio();
 const config = useRuntimeConfig();
 const catalog = new WorkImageCatalog(config.public.workImages);
-const images = computed(() =>
-  catalog.getImages(props.project.getId()),
-);
+const images = computed(() => catalog.getImages(props.project.getId()));
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .work-project {
   min-width: 0;
   padding: 40px 0;

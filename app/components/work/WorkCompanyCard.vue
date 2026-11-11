@@ -29,7 +29,10 @@ const props = defineProps({
 const { language, t } = usePortfolio();
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use "~/assets/styles/project-card";
+@include project-card.card;
+
 .work-company-card h2 {
   margin-top: 28px;
   font-size: 27px;

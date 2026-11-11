@@ -17,7 +17,7 @@ const props = defineProps({ period: { type: WorkPeriod, required: true } });
 const { t } = usePortfolio();
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .work-period {
   display: flex;
   flex-wrap: wrap;

@@ -14,7 +14,9 @@
           'gallery-preview__thumbnail',
           `gallery-preview__thumbnail--${index + 1}`,
         ]"
-        :aria-label="`${t.workContent.enlarge}: ${props.title} — ${t.workContent.image} ${index + 1}`"
+        :aria-label="`${t.workContent.enlarge}: ${props.title} — ${
+          t.workContent.image
+        } ${index + 1}`"
         @click="emit('open', index)"
       >
         <img
@@ -34,7 +36,9 @@
             'gallery-preview__more',
             `gallery-preview__more--${capacity}`,
           ]"
-          :aria-label="`${layout.getRemaining(capacity)} ${t.workContent.moreImages}: ${props.title}`"
+          :aria-label="`${layout.getRemaining(capacity)} ${
+            t.workContent.moreImages
+          }: ${props.title}`"
           @click="emit('open', capacity)"
         >
           <span class="gallery-preview__number"
@@ -61,7 +65,7 @@ const { t } = usePortfolio();
 const layout = computed(() => new ImagePreviewLayout(props.images.length));
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .gallery-preview {
   container-type: inline-size;
   min-width: 0;
