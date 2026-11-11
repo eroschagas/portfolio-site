@@ -42,7 +42,20 @@
         :aria-label="t.workContent.previous"
         @click="emit('previous')"
       >
-        ←
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M19 12H5m6-6-6 6 6 6" />
+        </svg>
       </button>
       <p class="gallery-viewer__counter" aria-live="polite" aria-atomic="true">
         {{ props.index + 1 }} / {{ props.images.length }}
@@ -54,7 +67,20 @@
         :aria-label="t.workContent.next"
         @click="emit('next')"
       >
-        →
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M5 12h14m-6-6 6 6-6 6" />
+        </svg>
       </button>
     </div>
   </div>
@@ -72,7 +98,9 @@ const emit = defineEmits(["open", "previous", "next"]);
 const { t } = usePortfolio();
 const imageDescription = computed(
   () =>
-    `${props.title} — ${t.value.workContent.image} ${props.index + 1} / ${props.images.length}`,
+    `${props.title} — ${t.value.workContent.image} ${props.index + 1} / ${
+      props.images.length
+    }`
 );
 let touchStart: { x: number; y: number } | null = null;
 const onTouchStart = (event: TouchEvent) => {
@@ -136,6 +164,10 @@ const onTouchEnd = (event: TouchEvent) => {
   margin-top: 14px;
 }
 .gallery-viewer__arrow {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  line-height: 1;
   flex-shrink: 0;
   width: 44px;
   height: 44px;

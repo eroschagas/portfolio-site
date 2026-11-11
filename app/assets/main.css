@@ -1,4 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/dm-sans-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+}
 :root {
   --bg: #101211;
   --text: #f0f1e9;
@@ -87,9 +100,7 @@ h2 {
   color: var(--accent);
 }
 .brand small {
-  font:
-    12px "DM Sans",
-    sans-serif;
+  font: 12px "DM Sans", sans-serif;
   letter-spacing: 0;
   margin-left: 17px;
   color: var(--muted);
@@ -221,9 +232,7 @@ h3,
   padding: 16px 20px;
   border-radius: 4px;
   font-weight: 600;
-  transition:
-    background 0.2s,
-    transform 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 .button:hover {
   background: #d9ffac;
@@ -284,7 +293,7 @@ h3,
 }
 .code-window__body {
   overflow-wrap: anywhere;
-  font: clamp(10px, 1vw, 13px)/2.2 monospace;
+  font: clamp(10px, 1vw, 13px) / 2.2 monospace;
   padding: 25px 20px;
   color: #c7cebd;
 }
@@ -418,9 +427,7 @@ h3,
   border: 1px solid var(--border);
   border-radius: 6px;
   background: #171a16;
-  transition:
-    border-color 0.2s,
-    transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s;
 }
 .project-card:hover {
   border-color: #849b68;
@@ -441,9 +448,7 @@ h3,
   align-items: center;
   justify-content: center;
   color: #c6f589;
-  font:
-    80px "Space Grotesk",
-    sans-serif;
+  font: 80px "Space Grotesk", sans-serif;
   background: radial-gradient(ellipse, #c6f5890d, transparent 65%);
 }
 .project-card--work .project-card__art {

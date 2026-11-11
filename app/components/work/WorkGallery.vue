@@ -19,10 +19,23 @@
           autofocus
           @click="close"
         >
-          ×
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
         </button>
       </div>
       <GalleryViewer
+        v-if="isOpen"
         :images="props.images"
         :title="props.title"
         :index="carousel.index"
@@ -37,6 +50,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import { ImageCarouselState } from "~/models/ImageCarouselState";
+import { GalleryImageLoader } from "~/services/GalleryImageLoader";
 import GalleryViewer from "./GalleryViewer.vue";
 import GalleryPreview from "./GalleryPreview.vue";
 const props = defineProps({
@@ -46,16 +60,21 @@ const props = defineProps({
 const { t } = usePortfolio();
 const carousel = reactive(new ImageCarouselState(props.images.length));
 const dialog = ref<HTMLDialogElement | null>(null);
+const isOpen = ref(false);
+const imageLoader = new GalleryImageLoader();
 let previousOverflow: string | null = null;
 const open = (index: number) => {
   if (!dialog.value || dialog.value.open) return;
   carousel.select(index);
+  isOpen.value = true;
+  imageLoader.preload(props.images, carousel.index);
   previousOverflow = document.body.style.overflow;
   document.body.style.overflow = "hidden";
   dialog.value.showModal();
 };
 const close = () => dialog.value?.close();
 const onClose = () => {
+  isOpen.value = false;
   if (previousOverflow !== null) {
     document.body.style.overflow = previousOverflow;
     previousOverflow = null;
@@ -78,11 +97,13 @@ watch(
   (images) => {
     close();
     carousel.reset(images.length);
-  },
+    imageLoader.clear();
+  }
 );
 onBeforeUnmount(() => {
   close();
   onClose();
+  imageLoader.clear();
 });
 </script>
 
@@ -119,6 +140,10 @@ onBeforeUnmount(() => {
   font-weight: 500;
 }
 .work-gallery__close {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  line-height: 1;
   width: 44px;
   height: 44px;
   flex-shrink: 0;
