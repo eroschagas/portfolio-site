@@ -21,6 +21,7 @@
         width="1200"
         height="750"
         loading="lazy"
+        draggable="false"
       />
       <span class="gallery-viewer__expand" aria-hidden="true"
         >⤢ {{ t.workContent.enlarge }}</span
@@ -33,6 +34,7 @@
       :alt="imageDescription"
       width="1200"
       height="750"
+      draggable="false"
     />
     <div class="gallery-viewer__controls">
       <button
@@ -58,7 +60,9 @@
         </svg>
       </button>
       <p class="gallery-viewer__counter" aria-live="polite" aria-atomic="true">
-        {{ props.index + 1 }} / {{ props.images.length }}
+        <span class="gallery-viewer__current">{{ props.index + 1 }}</span>
+        <span>/</span>
+        <span class="gallery-viewer__total">{{ props.images.length }}</span>
       </p>
       <button
         v-if="props.images.length > 1"
@@ -126,6 +130,8 @@ const onTouchEnd = (event: TouchEvent) => {
 <style scoped lang="scss">
 .gallery-viewer {
   min-width: 0;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .gallery-viewer__image-button {
   display: block;
@@ -182,8 +188,21 @@ const onTouchEnd = (event: TouchEvent) => {
   border-color: var(--accent);
 }
 .gallery-viewer__counter {
+  display: grid;
+  grid-template-columns: 3ch 1ch 3ch;
+  column-gap: 1ch;
+  flex-shrink: 0;
+  min-width: 9ch;
+  text-align: center;
+  white-space: nowrap;
   color: var(--muted);
   font: 12px monospace;
+}
+.gallery-viewer__current {
+  text-align: right;
+}
+.gallery-viewer__total {
+  text-align: left;
 }
 .gallery-viewer--expanded .gallery-viewer__image {
   height: min(68dvh, 850px);
