@@ -9,7 +9,7 @@
     "github": "https://github.com/eroschagas/file-manager"
   },
   {
-    "name": { "en": "Consulta de Preços", "pt": "Consulta de Preços" },
+    "name": { "en": "Price Check", "pt": "Consulta de Preços" },
     "description": {
       "en": "Desktop app built with Vue 3, TypeScript and Electron, with AI-assisted development. Imports spreadsheets and looks up minimum and maximum prices by barcode, search term, category or fuel type, within a selected region and radius. Writes results to chosen columns and exports a copy in XLSX, XLSM or CSV, with cancellation, partial results and retries for failed queries.",
       "pt": "Aplicativo desktop desenvolvido com Vue 3, TypeScript e Electron, com auxílio de IA. Importa planilhas e consulta preços mínimos e máximos por código de barras, termo, categoria ou tipo de combustível, na região e no raio selecionados. Grava os resultados nas colunas escolhidas e exporta uma cópia em XLSX, XLSM ou CSV, com cancelamento, resultados parciais e novas tentativas para consultas com falha."
