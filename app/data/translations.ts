@@ -2,6 +2,7 @@ export const translations = {
   pt: {
     workContent: {
       projects: "Projetos",
+      subprojects: "Subprojetos",
       period: "Período de trabalho",
       present: "Atual",
       project: "Projeto",
@@ -72,6 +73,7 @@ export const translations = {
   en: {
     workContent: {
       projects: "Projects",
+      subprojects: "Subprojects",
       period: "Employment period",
       present: "Present",
       project: "Project",

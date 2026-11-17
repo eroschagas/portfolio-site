@@ -1,6 +1,6 @@
 import { WorkCompany, type WorkCompanyData } from "~/models/WorkCompany";
 
-const companies = import.meta.glob<WorkCompanyData>("../data/work/*.json", {
+const companies = import.meta.glob<WorkCompanyData>("../data/work/*.ts", {
   eager: true,
   import: "default",
 });
@@ -10,18 +10,12 @@ export class WorkRepository {
     return Object.entries(companies)
       .map(
         ([file, data]) =>
-          new WorkCompany(
-            file
-              .split("/")
-              .pop()!
-              .replace(/\.json$/, ""),
-            data,
-          ),
+          new WorkCompany(file.split("/").pop()!.replace(/\.ts$/, ""), data)
       )
       .sort(
         (left, right) =>
           left.period.compareRecent(right.period) ||
-          left.slug.localeCompare(right.slug),
+          left.slug.localeCompare(right.slug)
       );
   }
 

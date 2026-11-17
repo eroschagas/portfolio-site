@@ -4,7 +4,9 @@
       {{ t.workContent.project }} /
       {{ String(props.index + 1).padStart(2, "0") }}
     </p>
-    <h2>{{ props.project.getName(language) }}</h2>
+    <component :is="`h${props.headingLevel}`" class="work-project__title">
+      {{ props.project.getName(language) }}
+    </component>
     <p class="work-project__description">
       {{ props.project.getDescription(language) }}
     </p>
@@ -13,6 +15,18 @@
       :images="images"
       :title="props.project.getName(language)"
     />
+    <WorkSubprojectsPanel
+      v-if="props.project.subprojects.length"
+      :count="props.project.subprojects.length"
+    >
+      <WorkProjectSection
+        v-for="(subproject, index) in props.project.subprojects"
+        :key="subproject.getId()"
+        :project="subproject"
+        :index="index"
+        :heading-level="Math.min(props.headingLevel + 1, 6)"
+      />
+    </WorkSubprojectsPanel>
   </article>
 </template>
 
@@ -20,9 +34,11 @@
 import { WorkProject } from "~/models/WorkProject";
 import { WorkImageCatalog } from "~/services/WorkImageCatalog";
 import WorkGallery from "./WorkGallery.vue";
+import WorkSubprojectsPanel from "./WorkSubprojectsPanel.vue";
 const props = defineProps({
   project: { type: WorkProject, required: true },
   index: { type: Number, default: 0 },
+  headingLevel: { type: Number, default: 2 },
 });
 const { language, t } = usePortfolio();
 const config = useRuntimeConfig();
@@ -36,7 +52,7 @@ const images = computed(() => catalog.getImages(props.project.getId()));
   padding: 40px 0;
   border-top: 1px solid var(--border);
 }
-.work-project h2 {
+.work-project__title {
   margin-top: 15px;
   font-size: clamp(26px, 4vw, 36px);
 }

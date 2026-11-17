@@ -2,7 +2,7 @@
 
 ## Conteúdo dos projetos
 
-Edite `app/data/ai-assisted.json` e `app/data/legacy.json`. Cada arquivo contém um array de projetos; os cards aparecem automaticamente na respectiva página. O Legacy contém cinco projetos reais importados do [portfólio antigo](https://eros-chagas-portfolio.netlify.app/), com nomes e descrições em português e inglês. Os links individuais de repositório foram omitidos porque não constavam na página de origem. AI Assisted contém o [File Manager](https://github.com/eroschagas/file-manager), com descrição bilíngue baseada no README do repositório, link para o download de Windows indicado nele e link para o código-fonte. Os mocks foram removidos.
+Edite `app/data/ai-assisted.ts` e `app/data/legacy.ts`. Cada arquivo contém um array de projetos; os cards aparecem automaticamente na respectiva página. O Legacy contém cinco projetos reais importados do [portfólio antigo](https://eros-chagas-portfolio.netlify.app/), com nomes e descrições em português e inglês. Os links individuais de repositório foram omitidos porque não constavam na página de origem. AI Assisted contém o [File Manager](https://github.com/eroschagas/file-manager), com descrição bilíngue baseada no README do repositório, link para o download de Windows indicado nele e link para o código-fonte. Os mocks foram removidos.
 
 ```json
 [
@@ -26,30 +26,34 @@ Durante `npm run dev`, alterações nos arquivos são recarregadas. Em produçã
 
 ### Empresas e projetos de Work
 
-Cada JSON em `app/data/work/` gera automaticamente um card em `/work`. O nome do arquivo define a rota da empresa: `econet.json` abre `/work/econet`. Esse arquivo contém a experiência real na Econet Editora (07/2022 a 08/2024, período confirmado pelo autor) e 12 projetos com nomes e descrições bilíngues baseados nas informações fornecidas pelo autor. A apresentação da empresa foi resumida a partir do [site institucional](https://grupo.econeteditora.com.br/sobre-econet.html). As empresas fictícias e suas imagens foram removidas. Os projetos sem imagens não exibem galeria; para adicioná-las, use os respectivos IDs em `public/work/<id>/`.
+Cada arquivo TypeScript em `app/data/work/` gera automaticamente um card em `/work`. O nome do arquivo define a rota da empresa: `econet.ts` abre `/work/econet`. Esse arquivo contém a experiência real na Econet Editora (07/2022 a 08/2024, período confirmado pelo autor) e 12 projetos com nomes e descrições bilíngues baseados nas informações fornecidas pelo autor. A apresentação da empresa foi resumida a partir do [site institucional](https://grupo.econeteditora.com.br/sobre-econet.html). As empresas fictícias e suas imagens foram removidas. Os projetos sem imagens não exibem galeria; para adicioná-las, use os respectivos IDs em `public/work/<id>/`.
 
-`socarrao.json` contém a experiência na SóCarrão (08/2024 a 11/2026, período confirmado pelo autor), com cinco itens bilíngues: responsabilidade técnica front-end, anúncios para particulares, adaptação à nova arquitetura de backend, gerenciamento interno e área logada para revendas. O conteúdo foi elaborado a partir das informações fornecidas pelo autor, sem adicionar projetos não confirmados. A página fica em `/work/socarrao`.
+`socarrao.ts` contém a experiência na SóCarrão (08/2024 a 11/2026, período confirmado pelo autor), com cinco itens bilíngues: responsabilidade técnica front-end, anúncios para particulares, adaptação à nova arquitetura de backend, gerenciamento interno e área logada para revendas. O conteúdo foi elaborado a partir das informações fornecidas pelo autor, sem adicionar projetos não confirmados. A página fica em `/work/socarrao`.
 
-```json
-{
-  "name": { "en": "Company name", "pt": "Nome da empresa" },
-  "description": {
-    "en": "Company description.",
-    "pt": "Descrição da empresa."
+```ts
+import type { WorkCompanyData } from "../../models/WorkCompany";
+
+const company: WorkCompanyData = {
+  name: { en: "Company name", pt: "Nome da empresa" },
+  description: {
+    en: "Company description.",
+    pt: "Descrição da empresa.",
   },
-  "start": "01/2024",
-  "end": "12/2025",
-  "projects": [
+  start: "01/2024",
+  end: "12/2025",
+  projects: [
     {
-      "id": "customer-portal",
-      "name": { "en": "Customer Portal", "pt": "Portal do cliente" },
-      "description": {
-        "en": "Project description.",
-        "pt": "Descrição do projeto."
-      }
-    }
-  ]
-}
+      id: "customer-portal",
+      name: { en: "Customer Portal", pt: "Portal do cliente" },
+      description: {
+        en: "Project description.",
+        pt: "Descrição do projeto.",
+      },
+    },
+  ],
+};
+
+export default company;
 ```
 
 O campo `start` é obrigatório e `end` é opcional. Ambos usam o formato `MM/AAAA` (por exemplo, `01/2026`). Omita `end` ou deixe uma string vazia para trabalhos atuais, exibidos como “Atual” em português e “Present” em inglês. O período aparece no card e, em tamanho discreto, abaixo da descrição na página da empresa. O mês deve ser válido e a data final não pode ser anterior à inicial.
@@ -161,3 +165,29 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Work subprojects
+
+Each file exports a default object typed as `WorkCompanyData`, providing editor suggestions and validation for companies, projects and nested subprojects.
+
+Entries in `app/data/work/*.ts` accept an optional `subprojects` array. Each child uses the same fields and gallery as its parent. For example (replace the illustrative content with real project details):
+
+```json
+{
+  "id": "parent-project",
+  "name": { "en": "Project name", "pt": "Nome do projeto" },
+  "description": { "en": "Project description", "pt": "Descri??o do projeto" },
+  "subprojects": [
+    {
+      "id": "child-project",
+      "name": { "en": "Subproject name", "pt": "Nome do subprojeto" },
+      "description": {
+        "en": "Subproject description",
+        "pt": "Descri??o do subprojeto"
+      }
+    }
+  ]
+}
+```
+
+Place child images directly in `public/work/child-project/`, using the child's exact `id`, just as for top-level projects. Keep IDs unique across the portfolio. Subprojects appear in a collapsed panel below the parent gallery; empty or omitted arrays show no panel. Children may also contain `subprojects`. Names and descriptions must include English and Portuguese translations. Rebuild for production after adding images.
