@@ -8,7 +8,7 @@ const projects: ProjectData[] = [
       pt: "Aplicativo desktop desenvolvido com Vue 3, TypeScript e Electron, com auxílio de IA. Encontra fotos e vídeos duplicados ou visualmente semelhantes, organiza arquivos em pastas por ano e mês e edita metadados de mídia em lote. Todo o processamento é local, sem enviar arquivos a serviços externos.",
     },
 
-    link: "https://drive.google.com/file/d/14OTTyofIaB3FnNg4w_ODrJ_jxAm96i9i/view?usp=sharing",
+    link: "https://lumora-app-website.netlify.app/",
     github: "https://github.com/eroschagas/file-manager",
   },
   {
