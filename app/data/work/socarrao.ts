@@ -60,6 +60,30 @@ const company: WorkCompanyData = {
             en: "User listing interface with multiple search filters and actions for viewing and editing registration records, deactivating or blocking accounts, and requesting password changes. For professional users representing dealerships, it also supports creating and editing featured listing packages and websites for specific dealerships. Access to these features depends on the permissions assigned to the logged-in account.",
             pt: "Interface de listagem de usuários com diversos filtros de busca e ações para visualização e edição dos cadastros, inativação e bloqueio de contas e solicitação de alteração de senha. Para usuários profissionais, que representam revendas, também permite criar e editar pacotes de destaques e sites para revendas específicas. O acesso a essas funcionalidades depende das permissões atribuídas à conta logada.",
           },
+          subprojects: [
+            {
+              id: "socarrao-internal-user-featured-packages",
+              name: {
+                en: "Featured Listing Package Management",
+                pt: "Gerenciamento de Pacotes de Destaques",
+              },
+              description: {
+                en: "Modal for creating and editing featured listing packages sold by SóCarrão to dealerships. The packages include Bronze, Silver, Gold and Super, which give vehicles higher placement in search results. Management is available through professional user accounts in the internal system, subject to the logged-in account's permissions.",
+                pt: "Modal para criação e edição dos pacotes de destaques vendidos pela SóCarrão às revendas. Os pacotes incluem Bronze, Prata, Ouro e Super, que posicionam os veículos acima na listagem dos resultados de busca. O gerenciamento é realizado a partir dos cadastros de usuários profissionais no sistema interno, conforme as permissões da conta logada.",
+              },
+            },
+            {
+              id: "socarrao-internal-user-dealership-hotsites",
+              name: {
+                en: "Dealership Hotsite Builder",
+                pt: "Construção de Hotsites para Revendas",
+              },
+              description: {
+                en: "Interface for creating and editing hotsites for dealerships that purchase this feature. The layout is configured using predefined templates, and the site is built based on the selected options. A preview allows the dealership's hotsite to be viewed with the chosen configuration. Access is available through professional user accounts in the internal system, subject to the logged-in account's permissions.",
+                pt: "Interface para criação e edição de hotsites para revendas que contratam a funcionalidade. O layout é configurado a partir de modelos padrão, e o site é construído com base nas opções escolhidas. A interface também oferece um preview do hotsite da revenda com a configuração selecionada. O acesso é realizado a partir dos cadastros de usuários profissionais no sistema interno, conforme as permissões da conta logada.",
+              },
+            },
+          ],
         },
         {
           id: "socarrao-internal-groups",
