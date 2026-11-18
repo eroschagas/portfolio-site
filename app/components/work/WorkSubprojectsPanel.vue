@@ -1,5 +1,5 @@
 <template>
-  <details class="work-subprojects">
+  <details class="work-subprojects" @toggle="onToggle">
     <summary class="work-subprojects__toggle">
       <span>{{ t.workContent.subprojects }} ({{ props.count }})</span>
       <svg
@@ -19,7 +19,7 @@
         <path d="m6 9 6 6 6-6" />
       </svg>
     </summary>
-    <div class="work-subprojects__content">
+    <div v-if="hasOpened" class="work-subprojects__content">
       <slot />
     </div>
   </details>
@@ -30,12 +30,15 @@ const props = defineProps({
   count: { type: Number, required: true },
 });
 const { t } = usePortfolio();
+const hasOpened = ref(false);
+const onToggle = (event: Event) => {
+  if ((event.currentTarget as HTMLDetailsElement).open) hasOpened.value = true;
+};
 </script>
 
 <style scoped lang="scss">
 .work-subprojects {
   min-width: 0;
-  margin-top: 26px;
   border: 1px solid var(--border);
   border-radius: 12px;
 
