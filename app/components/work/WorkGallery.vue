@@ -67,30 +67,46 @@ const { carousel, dialog, isOpen, open, close, onClose, onBackdropClick } =
   min-width: 0;
 }
 .work-gallery__modal {
-  width: min(1200px, calc(100% - 48px));
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
   max-width: none;
-  max-height: calc(100dvh - 48px);
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  max-height: none;
+  margin: 0;
+  padding: max(8px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
   background: var(--bg);
   color: var(--text);
   overscroll-behavior: contain;
+
+  &[open] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 8px;
+  }
 }
 .work-gallery__modal::backdrop {
   background: #000c;
 }
 .work-gallery__heading {
   display: flex;
+  min-width: 0;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  margin-bottom: 18px;
 }
 .work-gallery__heading h3 {
   min-width: 0;
-  overflow-wrap: anywhere;
-  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
   font-weight: 500;
 }
 .work-gallery__close {
@@ -109,14 +125,8 @@ const { carousel, dialog, isOpen, open, close, onClose, onBackdropClick } =
   font-size: 26px;
 }
 @media (max-width: 767px) {
-  .work-gallery__modal {
-    width: calc(100% - 24px);
-    max-height: calc(100dvh - 24px);
-    padding: 14px;
-    border-radius: 12px;
-  }
   .work-gallery__heading h3 {
-    font-size: 17px;
+    font-size: 16px;
   }
 }
 </style>

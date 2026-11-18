@@ -204,10 +204,21 @@ const onTouchEnd = (event: TouchEvent) => {
 .gallery-viewer__total {
   text-align: left;
 }
+.gallery-viewer--expanded {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 8px;
+  min-height: 0;
+}
 .gallery-viewer--expanded .gallery-viewer__image {
-  height: min(68dvh, 850px);
+  min-height: 0;
+  height: 100%;
   aspect-ratio: auto;
   background: var(--bg);
+}
+.gallery-viewer--expanded .gallery-viewer__controls {
+  margin-top: 0;
 }
 @media (max-width: 767px) {
   .gallery-viewer__expand {
@@ -215,9 +226,6 @@ const onTouchEnd = (event: TouchEvent) => {
     font-size: 11px;
     right: 8px;
     bottom: 8px;
-  }
-  .gallery-viewer--expanded .gallery-viewer__image {
-    height: 58dvh;
   }
 }
 </style>

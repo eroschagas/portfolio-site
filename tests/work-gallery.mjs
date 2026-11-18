@@ -179,6 +179,7 @@ class WorkGalleryAudit {
           await modal.locator("img").getAttribute("src"),
           expectedSource
         );
+        await this.auditModalLayout(page, modal);
         await page.keyboard.press("Escape");
         await page.waitForFunction(
           () =>
@@ -186,7 +187,9 @@ class WorkGalleryAudit {
             document.body.style.overflow !== "hidden"
         );
       }
-      const panel = section.locator(":scope > .work-subprojects");
+      const panel = section.locator(
+        ":scope > .work-project__details > .work-subprojects"
+      );
       const children = project.subprojects ?? [];
       assert.equal(await panel.count(), children.length ? 1 : 0);
       if (children.length) {
@@ -196,14 +199,14 @@ class WorkGalleryAudit {
         const toggle = panel.locator(":scope > summary");
         assert.equal(
           (await toggle.locator(":scope > span").first().textContent()).trim(),
-          `${language === "en" ? "Subprojects" : "Subprojetos"} (${
-            children.length
-          })`
+          `${language === "en" ? "Details" : "Detalhes"} (${children.length})`
         );
         if (await gallery.count()) {
           assert.equal(
             await gallery.evaluate((element) =>
-              element.nextElementSibling?.classList.contains("work-subprojects")
+              element.nextElementSibling?.classList.contains(
+                "work-project__details"
+              )
             ),
             true
           );
@@ -222,6 +225,70 @@ class WorkGalleryAudit {
         await content.waitFor({ state: "hidden" });
       }
     }
+  }
+
+  async auditModalLayout(page, modal) {
+    const initialViewport = page.viewportSize();
+    for (const viewport of [
+      { width: 360, height: 640 },
+      { width: 844, height: 390 },
+      { width: 1440, height: 300 },
+      { width: 2560, height: 360 },
+      { width: 1920, height: 1080 },
+    ]) {
+      await page.setViewportSize(viewport);
+      const geometry = await modal.evaluate((element) => {
+        const bounds = element.getBoundingClientRect();
+        const descendants = [
+          element,
+          element.querySelector(".gallery-viewer"),
+          element.querySelector("img"),
+          element.querySelector(".work-gallery__close"),
+          element.querySelector(".gallery-viewer__controls"),
+        ];
+        return {
+          x: bounds.x,
+          y: bounds.y,
+          width: bounds.width,
+          height: bounds.height,
+          fits: descendants.every((child) => {
+            const rect = child.getBoundingClientRect();
+            return (
+              rect.width > 0 &&
+              rect.height > 0 &&
+              rect.left >= 0 &&
+              rect.top >= 0 &&
+              rect.right <= window.innerWidth + 1 &&
+              rect.bottom <= window.innerHeight + 1 &&
+              child.scrollWidth <= child.clientWidth + 1 &&
+              child.scrollHeight <= child.clientHeight + 1
+            );
+          }),
+          imageFit: getComputedStyle(element.querySelector("img")).objectFit,
+          elements: descendants.map((child) => ({
+            className: child.className,
+            rect: child.getBoundingClientRect().toJSON(),
+            scrollWidth: child.scrollWidth,
+            clientWidth: child.clientWidth,
+            scrollHeight: child.scrollHeight,
+            clientHeight: child.clientHeight,
+          })),
+        };
+      });
+      assert.equal(geometry.x, 0);
+      assert.equal(geometry.y, 0);
+      assert.equal(geometry.width, viewport.width);
+      assert.equal(geometry.height, viewport.height);
+      assert.equal(
+        geometry.fits,
+        true,
+        `Modal overflow at ${viewport.width}x${
+          viewport.height
+        }: ${JSON.stringify(geometry.elements)}`
+      );
+      assert.equal(geometry.imageFit, "contain");
+    }
+    await page.setViewportSize(initialViewport);
   }
 
   async waitForServer() {
