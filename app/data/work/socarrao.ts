@@ -121,32 +121,32 @@ const company: WorkCompanyData = {
           id: "socarrao-internal-inspected-vehicles",
           name: { en: "Inspected Vehicles", pt: "Vistoriados" },
           description: {
-            en: "Administrative page for managing vehicles associated with the Vistoriados product.",
-            pt: "Página administrativa para gerenciamento dos veículos vinculados ao produto Vistoriados.",
+            en: "Feature for adding dealerships participating in the Vistoriados program and identifying their vehicles with a one-year warranty. Vehicles are linked to each participating dealership by registering their license plates, allowing the vehicles covered by the warranty to be marked on the platform.",
+            pt: "Funcionalidade para adicionar as revendas participantes do programa Vistoriados e identificar seus veículos com um ano de garantia. Os veículos são vinculados a cada revenda participante por meio do cadastro de suas placas, permitindo marcar na plataforma aqueles que possuem essa garantia.",
           },
         },
         {
           id: "socarrao-internal-equalizer",
           name: { en: "Equalizer", pt: "Equalizador" },
           description: {
-            en: "Administrative page dedicated to the Equalizador feature within the platform's featured listing tools.",
-            pt: "Página administrativa dedicada à funcionalidade Equalizador, na área de ferramentas de destaque de anúncios da plataforma.",
+            en: "Feature for adjusting the search ranking of vehicles from specific dealerships. It allows these vehicles to be given an advantage or penalized, increasing or reducing their priority in search results.",
+            pt: "Funcionalidade para ajustar o posicionamento dos veículos de determinadas revendas nas buscas. Permite dar vantagens ou aplicar penalizações a esses veículos, aumentando ou reduzindo sua prioridade nos resultados de busca.",
           },
         },
         {
           id: "socarrao-internal-vehicle-fair",
           name: { en: "Vehicle Fair", pt: "Feirão" },
           description: {
-            en: "Administrative page for managing the Feirão feature within the platform's featured listing area.",
-            pt: "Página administrativa para gerenciamento da funcionalidade Feirão na área de destaques da plataforma.",
+            en: "Feature for registering vehicle sales fairs and defining the period during which each fair takes place.",
+            pt: "Funcionalidade para cadastrar feirões de veículos e definir o período de realização de cada feirão.",
           },
         },
         {
           id: "socarrao-internal-moderation",
           name: { en: "Moderation", pt: "Moderação" },
           description: {
-            en: "Interface for reviewing and moderating vehicle listings submitted by private sellers.",
-            pt: "Interface para análise e moderação dos anúncios de veículos enviados por anunciantes particulares.",
+            en: "Feature for reviewing and moderating vehicle listings from private sellers that are flagged by one or more moderation rules.",
+            pt: "Funcionalidade para análise e moderação de anúncios de veículos de anunciantes particulares que se enquadram em uma ou mais regras de moderação.",
           },
         },
         {
