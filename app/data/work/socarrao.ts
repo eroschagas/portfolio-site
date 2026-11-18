@@ -57,16 +57,16 @@ const company: WorkCompanyData = {
           id: "socarrao-internal-users",
           name: { en: "Users", pt: "Usuários" },
           description: {
-            en: "Interface for consulting and maintaining user registration records in the internal management system.",
-            pt: "Interface para consulta e manutenção dos cadastros de usuários no sistema de gerenciamento interno.",
+            en: "User listing interface with multiple search filters and actions for viewing and editing registration records, deactivating or blocking accounts, and requesting password changes. For professional users representing dealerships, it also supports creating and editing featured listing packages and websites for specific dealerships. Access to these features depends on the permissions assigned to the logged-in account.",
+            pt: "Interface de listagem de usuários com diversos filtros de busca e ações para visualização e edição dos cadastros, inativação e bloqueio de contas e solicitação de alteração de senha. Para usuários profissionais, que representam revendas, também permite criar e editar pacotes de destaques e sites para revendas específicas. O acesso a essas funcionalidades depende das permissões atribuídas à conta logada.",
           },
         },
         {
           id: "socarrao-internal-groups",
           name: { en: "Groups", pt: "Grupos" },
           description: {
-            en: "Interface for managing user groups and organizing administrative access within the platform.",
-            pt: "Interface para gerenciamento de grupos de usuários e organização dos acessos administrativos da plataforma.",
+            en: "Interface for organizing dealership groups and assigning their administrators. Dealerships are linked to the group as professional users representing businesses, while administrators are registered as common users representing individuals. This relationship gives administrators access to the group's dealerships in the Partner Dealership Portal, where they can select a specific dealership and perform all the actions available to that dealership's own account.",
+            pt: "Interface para organização de grupos de revendas e definição de seus administradores. As revendas são vinculadas ao grupo como usuários do tipo profissional, que representam empresas, enquanto os administradores são cadastrados como usuários do tipo comum, que representam pessoas físicas. Esse vínculo permite que os administradores acessem as lojas do grupo na Área Logada SóCarrão, escolham uma revenda específica e realizem todas as ações disponíveis para a própria conta da revenda.",
           },
         },
         {
@@ -89,8 +89,8 @@ const company: WorkCompanyData = {
           id: "socarrao-internal-brands",
           name: { en: "Vehicle Brands", pt: "Marcas" },
           description: {
-            en: "Interface for consulting and maintaining vehicle brand records used by the platform.",
-            pt: "Interface para consulta e manutenção dos cadastros de marcas de veículos utilizados pela plataforma.",
+            en: "Interface for managing the vehicle brands, models and versions registered on the website. It lists existing brands and allows new brands to be added. Selecting a brand opens its content for editing. The brand creation and editing modal also supports SEO content for display on the website. With a brand selected, users can add models or select an existing model from that brand's list. The model creation and editing modal likewise supports SEO content, displayed on the website when searching for that specific model. Selecting a model provides access to its versions and the option to add a new one. Selecting a version displays its data and allows its content to be edited, without SEO content fields.",
+            pt: "Interface para gerenciamento das marcas, modelos e versões de veículos cadastrados no site. A tela lista as marcas existentes e permite cadastrar novas marcas. Ao selecionar uma marca, é possível editar seu conteúdo. O modal de cadastro e edição da marca também permite incluir conteúdo de SEO para exibição no site. Com uma marca selecionada, é possível cadastrar novos modelos ou selecionar um modelo da lista daquela marca. O modal de cadastro e edição de modelos também permite incluir conteúdo de SEO, exibido no site quando há uma pesquisa pelo modelo específico. Ao selecionar um modelo, ficam disponíveis a lista de versões e a opção de adicionar uma nova versão. A seleção de uma versão exibe seus dados e permite editar seu conteúdo, sem campos de conteúdo de SEO.",
           },
         },
         {
