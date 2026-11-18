@@ -2,7 +2,22 @@
   <details class="work-subprojects">
     <summary class="work-subprojects__toggle">
       <span>{{ t.workContent.subprojects }} ({{ props.count }})</span>
-      <span class="work-subprojects__icon" aria-hidden="true">⌄</span>
+      <svg
+        class="work-subprojects__icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="m6 9 6 6 6-6" />
+      </svg>
     </summary>
     <div class="work-subprojects__content">
       <slot />
@@ -46,6 +61,7 @@ const { t } = usePortfolio();
   }
 
   &__icon {
+    display: block;
     flex-shrink: 0;
   }
 

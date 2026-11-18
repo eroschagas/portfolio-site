@@ -52,6 +52,88 @@ const company: WorkCompanyData = {
         en: "Development of an internal system for managing users, vehicles and registration records within the platform's new architecture. The tool supports maintenance, editing and control of administrative data that is not accessible to end users, bringing internal management workflows into a dedicated interface.",
         pt: "Desenvolvimento de um sistema interno para gerenciamento de usuários, veículos e cadastros na nova arquitetura da plataforma. A ferramenta apoia a manutenção, edição e controle de dados administrativos não acessíveis aos usuários finais, reunindo os fluxos de gestão interna em uma interface dedicada.",
       },
+      subprojects: [
+        {
+          id: "socarrao-internal-users",
+          name: { en: "Users", pt: "Usuários" },
+          description: {
+            en: "Interface for consulting and maintaining user registration records in the internal management system.",
+            pt: "Interface para consulta e manutenção dos cadastros de usuários no sistema de gerenciamento interno.",
+          },
+        },
+        {
+          id: "socarrao-internal-groups",
+          name: { en: "Groups", pt: "Grupos" },
+          description: {
+            en: "Interface for managing user groups and organizing administrative access within the platform.",
+            pt: "Interface para gerenciamento de grupos de usuários e organização dos acessos administrativos da plataforma.",
+          },
+        },
+        {
+          id: "socarrao-internal-permissions",
+          name: { en: "Permissions", pt: "Permissões" },
+          description: {
+            en: "Interface for managing permissions that define access to internal system features.",
+            pt: "Interface para gerenciamento das permissões que definem o acesso às funcionalidades do sistema interno.",
+          },
+        },
+        {
+          id: "socarrao-internal-integrator",
+          name: { en: "Integrator", pt: "Integrador" },
+          description: {
+            en: "Administrative page dedicated to managing the platform's integrator-related records.",
+            pt: "Página administrativa dedicada à gestão dos cadastros relacionados ao integrador da plataforma.",
+          },
+        },
+        {
+          id: "socarrao-internal-brands",
+          name: { en: "Vehicle Brands", pt: "Marcas" },
+          description: {
+            en: "Interface for consulting and maintaining vehicle brand records used by the platform.",
+            pt: "Interface para consulta e manutenção dos cadastros de marcas de veículos utilizados pela plataforma.",
+          },
+        },
+        {
+          id: "socarrao-internal-inspected-vehicles",
+          name: { en: "Inspected Vehicles", pt: "Vistoriados" },
+          description: {
+            en: "Administrative page for managing vehicles associated with the Vistoriados product.",
+            pt: "Página administrativa para gerenciamento dos veículos vinculados ao produto Vistoriados.",
+          },
+        },
+        {
+          id: "socarrao-internal-equalizer",
+          name: { en: "Equalizer", pt: "Equalizador" },
+          description: {
+            en: "Administrative page dedicated to the Equalizador feature within the platform's featured listing tools.",
+            pt: "Página administrativa dedicada à funcionalidade Equalizador, na área de ferramentas de destaque de anúncios da plataforma.",
+          },
+        },
+        {
+          id: "socarrao-internal-vehicle-fair",
+          name: { en: "Vehicle Fair", pt: "Feirão" },
+          description: {
+            en: "Administrative page for managing the Feirão feature within the platform's featured listing area.",
+            pt: "Página administrativa para gerenciamento da funcionalidade Feirão na área de destaques da plataforma.",
+          },
+        },
+        {
+          id: "socarrao-internal-moderation",
+          name: { en: "Moderation", pt: "Moderação" },
+          description: {
+            en: "Interface for reviewing and moderating vehicle listings submitted by private sellers.",
+            pt: "Interface para análise e moderação dos anúncios de veículos enviados por anunciantes particulares.",
+          },
+        },
+        {
+          id: "socarrao-internal-coupons",
+          name: { en: "Coupons", pt: "Cupom" },
+          description: {
+            en: "Administrative page for managing coupons associated with the private seller area.",
+            pt: "Página administrativa para gerenciamento de cupons vinculados à área de anunciantes particulares.",
+          },
+        },
+      ],
     },
     {
       id: "socarrao-dealership-portal",
