@@ -2,7 +2,7 @@ import type { ProjectData } from "../models/Project";
 
 const projects: ProjectData[] = [
   {
-    name: { en: "Lumora", pt: "Lumora" },
+    name: { en: "Lunera", pt: "Lunera" },
     description: {
       en: "Desktop app built with Vue 3, TypeScript and Electron, with AI-assisted development. Finds duplicate or visually similar photos and videos, organizes files into year and month folders, and edits media metadata in batches. All processing runs locally, without uploading files to external services.",
       pt: "Aplicativo desktop desenvolvido com Vue 3, TypeScript e Electron, com auxílio de IA. Encontra fotos e vídeos duplicados ou visualmente semelhantes, organiza arquivos em pastas por ano e mês e edita metadados de mídia em lote. Todo o processamento é local, sem enviar arquivos a serviços externos.",
