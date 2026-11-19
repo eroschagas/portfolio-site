@@ -1,5 +1,6 @@
 export class ImageCarouselState {
   index = 0;
+  direction: "previous" | "next" = "next";
   count: number;
 
   constructor(count: number) {
@@ -12,10 +13,12 @@ export class ImageCarouselState {
   }
 
   previous(): void {
+    this.direction = "previous";
     this.select(this.index - 1);
   }
 
   next(): void {
+    this.direction = "next";
     this.select(this.index + 1);
   }
 

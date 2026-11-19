@@ -27,16 +27,25 @@
         >⤢ {{ t.workContent.enlarge }}</span
       >
     </button>
-    <div v-else class="gallery-viewer__stage">
-      <img
-        class="gallery-viewer__image"
-        :src="props.images[props.index]"
-        :alt="imageDescription"
-        :aria-describedby="metadata.description ? captionId : undefined"
-        width="1200"
-        height="750"
-        draggable="false"
-      />
+    <div
+      v-else
+      class="gallery-viewer__stage"
+      :style="{
+        '--image-offset': props.direction === 'previous' ? '-18px' : '18px',
+      }"
+    >
+      <Transition name="gallery-viewer-image">
+        <img
+          :key="props.images[props.index]"
+          class="gallery-viewer__image"
+          :src="props.images[props.index]"
+          :alt="imageDescription"
+          :aria-describedby="metadata.description ? captionId : undefined"
+          width="1200"
+          height="750"
+          draggable="false"
+        />
+      </Transition>
       <GalleryImageCaption
         v-if="metadata.description"
         :description="metadata.description"
@@ -119,6 +128,10 @@ const props = defineProps({
   },
   title: { type: String, required: true },
   index: { type: Number, required: true },
+  direction: {
+    type: String as PropType<"previous" | "next">,
+    default: "next",
+  },
   expanded: { type: Boolean, default: false },
 });
 const emit = defineEmits(["open", "previous", "next"]);
@@ -238,9 +251,28 @@ const onTouchEnd = (event: TouchEvent) => {
   position: relative;
   min-width: 0;
   min-height: 0;
+  overflow: hidden;
+}
+.gallery-viewer__stage > .gallery-viewer__image {
+  position: absolute;
+  inset: 0;
 }
 .gallery-viewer--expanded .gallery-viewer__controls {
   margin-top: 0;
+}
+.gallery-viewer-image-enter-active,
+.gallery-viewer-image-leave-active {
+  transition: opacity 240ms linear, transform 240ms ease;
+}
+.gallery-viewer-image-enter-from,
+.gallery-viewer-image-leave-to {
+  opacity: 0;
+}
+.gallery-viewer-image-enter-from {
+  transform: translateX(var(--image-offset));
+}
+.gallery-viewer-image-leave-to {
+  transform: translateX(calc(-1 * var(--image-offset)));
 }
 @media (max-width: 767px) {
   .gallery-viewer__expand {
@@ -248,6 +280,13 @@ const onTouchEnd = (event: TouchEvent) => {
     font-size: 11px;
     right: 8px;
     bottom: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-viewer-image-enter-active,
+  .gallery-viewer-image-leave-active {
+    transition: none;
   }
 }
 </style>

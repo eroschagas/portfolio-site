@@ -49,6 +49,7 @@
         :image-metadata="props.imageMetadata"
         :title="props.title"
         :index="carousel.index"
+        :direction="carousel.direction"
         expanded
         @previous="carousel.previous()"
         @next="carousel.next()"
