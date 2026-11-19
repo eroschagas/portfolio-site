@@ -31,14 +31,15 @@
       v-else
       class="gallery-viewer__stage"
       :style="{
-        '--image-offset': props.direction === 'previous' ? '-18px' : '18px',
+        '--image-offset': displayedDirection === 'previous' ? '-18px' : '18px',
       }"
     >
       <Transition name="gallery-viewer-image">
         <img
-          :key="props.images[props.index]"
+          v-if="displayedSource"
+          :key="displayedSource"
           class="gallery-viewer__image"
-          :src="props.images[props.index]"
+          :src="displayedSource"
           :alt="imageDescription"
           :aria-describedby="metadata.description ? captionId : undefined"
           width="1200"
@@ -77,7 +78,7 @@
         </svg>
       </IconButton>
       <p class="gallery-viewer__counter" aria-live="polite" aria-atomic="true">
-        <span class="gallery-viewer__current">{{ props.index + 1 }}</span>
+        <span class="gallery-viewer__current">{{ visibleIndex + 1 }}</span>
         <span>/</span>
         <span class="gallery-viewer__total">{{ props.images.length }}</span>
       </p>
@@ -120,6 +121,7 @@ import IconButton from "../shared/IconButton.vue";
 import type { WorkImageMetadata } from "~/models/WorkProject";
 import GalleryImageCaption from "./GalleryImageCaption.vue";
 import GalleryDescriptionToggle from "./GalleryDescriptionToggle.vue";
+import { useGalleryImage } from "~/composables/useGalleryImage";
 const props = defineProps({
   images: { type: Array as PropType<string[]>, required: true },
   imageMetadata: {
@@ -138,15 +140,25 @@ const emit = defineEmits(["open", "previous", "next"]);
 const { t } = usePortfolio();
 const captionId = useId();
 const descriptionVisible = ref(true);
+const { displayedSource, displayedIndex, displayedDirection } = useGalleryImage(
+  () => ({
+    source: props.expanded ? props.images[props.index] ?? "" : "",
+    index: props.index,
+    direction: props.direction,
+  })
+);
+const visibleIndex = computed(() =>
+  props.expanded ? displayedIndex.value : props.index
+);
 const metadata = computed(
-  () => props.imageMetadata[props.index] ?? { alt: "", description: "" }
+  () => props.imageMetadata[visibleIndex.value] ?? { alt: "", description: "" }
 );
 const imageDescription = computed(
   () =>
     metadata.value.alt ||
-    `${props.title} — ${t.value.workContent.image} ${props.index + 1} / ${
-      props.images.length
-    }`
+    `${props.title} — ${t.value.workContent.image} ${
+      visibleIndex.value + 1
+    } / ${props.images.length}`
 );
 let touchStart: { x: number; y: number } | null = null;
 const onTouchStart = (event: TouchEvent) => {
@@ -248,6 +260,7 @@ const onTouchEnd = (event: TouchEvent) => {
   background: var(--bg);
 }
 .gallery-viewer__stage {
+  isolation: isolate;
   position: relative;
   min-width: 0;
   min-height: 0;
@@ -257,18 +270,22 @@ const onTouchEnd = (event: TouchEvent) => {
   position: absolute;
   inset: 0;
 }
+.gallery-viewer__stage > :deep(.gallery-caption) {
+  z-index: 2;
+}
 .gallery-viewer--expanded .gallery-viewer__controls {
   margin-top: 0;
 }
-.gallery-viewer-image-enter-active,
-.gallery-viewer-image-leave-active {
+.gallery-viewer-image-enter-active {
+  z-index: 1;
   transition: opacity 240ms linear, transform 240ms ease;
 }
-.gallery-viewer-image-enter-from,
-.gallery-viewer-image-leave-to {
-  opacity: 0;
+.gallery-viewer-image-leave-active {
+  z-index: 0;
+  transition: transform 240ms ease;
 }
 .gallery-viewer-image-enter-from {
+  opacity: 0;
   transform: translateX(var(--image-offset));
 }
 .gallery-viewer-image-leave-to {
