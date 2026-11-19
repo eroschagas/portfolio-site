@@ -192,18 +192,18 @@ const company: WorkCompanyData = {
             pt: "Reformulação completa da busca de veículos, com o layout inteiramente refeito com auxílio de IA. A nova busca passou a contar com filtros excludentes que mostram quantos veículos correspondem aos critérios selecionados antes de aplicar os filtros. As URLs de busca também se tornaram dinâmicas, mudando conforme o estado, a cidade, a marca e o modelo selecionados.",
           },
         },
+        {
+          id: "socarrao-growthbook-ab-testing",
+          name: {
+            en: "A/B Testing with GrowthBook",
+            pt: "Teste A/B com GrowthBook",
+          },
+          description: {
+            en: "Implementation of an A/B test on the SóCarrão platform using GrowthBook to compare different variants of an experience. A cookie stored the identifier used by GrowthBook, and the selected variant was rendered on the server side. Delivering the variant in the initial HTML avoided layout shifts caused by switching variants after the page loaded, preventing related CLS issues.",
+            pt: "Implementação de um teste A/B na plataforma SóCarrão utilizando o GrowthBook para comparar diferentes variantes de uma experiência. Um cookie armazenava o identificador utilizado pelo GrowthBook, e a variante selecionada era renderizada no lado do servidor. A entrega da variante no HTML inicial evitava deslocamentos de layout causados pela troca de variantes após o carregamento da página, prevenindo problemas de CLS relacionados a essa troca.",
+          },
+        },
       ],
-    },
-    {
-      id: "socarrao-growthbook-ab-testing",
-      name: {
-        en: "A/B Testing with GrowthBook",
-        pt: "Teste A/B com GrowthBook",
-      },
-      description: {
-        en: "Implementation of an A/B test on the SóCarrão platform using GrowthBook to compare different variants of an experience. A cookie stored the identifier used by GrowthBook, and the selected variant was rendered on the server side. Delivering the variant in the initial HTML avoided layout shifts caused by switching variants after the page loaded, preventing related CLS issues.",
-        pt: "Implementação de um teste A/B na plataforma SóCarrão utilizando o GrowthBook para comparar diferentes variantes de uma experiência. Um cookie armazenava o identificador utilizado pelo GrowthBook, e a variante selecionada era renderizada no lado do servidor. A entrega da variante no HTML inicial evitava deslocamentos de layout causados pela troca de variantes após o carregamento da página, prevenindo problemas de CLS relacionados a essa troca.",
-      },
     },
   ],
 };
