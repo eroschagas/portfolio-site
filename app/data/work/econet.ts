@@ -30,28 +30,30 @@ const company: WorkCompanyData = {
         en: "Restructuring of the legacy customer area into a monolithic application designed to accommodate new features. The interface was implemented from a completely new design, with a collapsible sidebar and sections for the customer dashboard, account, subscription payments, support, Econet journey, solutions and consulting. Four access configurations were provided according to each customer's contract.",
         pt: "Reestruturação da área do cliente legada em uma aplicação monolítica preparada para receber novas funcionalidades. A interface foi implementada a partir de um design completamente novo, com menu lateral retrátil e seções de painel do cliente, conta, mensalidade, atendimento, jornada Econet, soluções e consultoria. Foram contempladas quatro configurações de acesso conforme o contrato de cada cliente.",
       },
-    },
-    {
-      id: "econet-customer-referral-program",
-      name: {
-        en: "Customer Referral Program",
-        pt: "Indique e Ganhe",
-      },
-      description: {
-        en: "Implementation of a customer referral section within the Econet customer area. Customers can accumulate points by referring new clients and redeem them for courses offered by Econet Educacional, connecting the referral program to the company's educational services.",
-        pt: "Implementação de uma seção de indicações na área do cliente Econet. Os clientes podem acumular pontos ao indicar novos clientes e trocá-los por cursos disponibilizados pelo Econet Educacional, conectando o programa de indicações aos serviços educacionais da empresa.",
-      },
-    },
-    {
-      id: "econet-modular-courses",
-      name: {
-        en: "Modular Courses",
-        pt: "Cursos Modulares",
-      },
-      description: {
-        en: "Implementation spanning the customer area and a separate internal course management application. Customers gained a searchable course catalog, favorites and individual course completion tracking. The internal application covered the workflow between teams for creating, approving, reviewing and publishing new courses.",
-        pt: "Implementação que envolveu a área do cliente e uma aplicação interna separada para gestão de cursos. Os clientes passaram a contar com catálogo de cursos, filtros de pesquisa, favoritos e acompanhamento individual de conclusão. Na aplicação interna, foi desenvolvido o fluxo entre as áreas responsáveis pela criação, aprovação, revisão e publicação de novos cursos.",
-      },
+      subprojects: [
+        {
+          id: "econet-customer-referral-program",
+          name: {
+            en: "Customer Referral Program",
+            pt: "Indique e Ganhe",
+          },
+          description: {
+            en: "Implementation of a customer referral section within the Econet customer area. Customers can accumulate points by referring new clients and redeem them for courses offered by Econet Educacional, connecting the referral program to the company's educational services.",
+            pt: "Implementação de uma seção de indicações na área do cliente Econet. Os clientes podem acumular pontos ao indicar novos clientes e trocá-los por cursos disponibilizados pelo Econet Educacional, conectando o programa de indicações aos serviços educacionais da empresa.",
+          },
+        },
+        {
+          id: "econet-modular-courses",
+          name: {
+            en: "Modular Courses",
+            pt: "Cursos Modulares",
+          },
+          description: {
+            en: "Implementation spanning the customer area and a separate internal course management application. Customers gained a searchable course catalog, favorites and individual course completion tracking. The internal application covered the workflow between teams for creating, approving, reviewing and publishing new courses.",
+            pt: "Implementação que envolveu a área do cliente e uma aplicação interna separada para gestão de cursos. Os clientes passaram a contar com catálogo de cursos, filtros de pesquisa, favoritos e acompanhamento individual de conclusão. Na aplicação interna, foi desenvolvido o fluxo entre as áreas responsáveis pela criação, aprovação, revisão e publicação de novos cursos.",
+          },
+        },
+      ],
     },
     {
       id: "econet-simples-nacional-tax-calculator",
