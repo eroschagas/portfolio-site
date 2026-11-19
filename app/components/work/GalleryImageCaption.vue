@@ -1,14 +1,16 @@
 <template>
   <div class="gallery-caption">
-    <p
-      :id="props.descriptionId"
-      v-show="props.visible"
-      class="gallery-caption__description"
-      aria-live="polite"
-      aria-atomic="true"
-    >
-      {{ props.description }}
-    </p>
+    <Transition name="gallery-caption">
+      <p
+        :id="props.descriptionId"
+        v-show="props.visible"
+        class="gallery-caption__description"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {{ props.description }}
+      </p>
+    </Transition>
   </div>
 </template>
 
@@ -42,6 +44,17 @@ const props = defineProps({
   }
 }
 
+.gallery-caption-enter-active,
+.gallery-caption-leave-active {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.gallery-caption-enter-from,
+.gallery-caption-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
 @media (max-width: 767px) {
   .gallery-caption {
     inset: auto 6px 6px;
@@ -62,6 +75,13 @@ const props = defineProps({
       font-size: 11px;
       line-height: 1.3;
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-caption-enter-active,
+  .gallery-caption-leave-active {
+    transition: none;
   }
 }
 </style>

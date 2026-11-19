@@ -8,9 +8,13 @@
     />
     <dialog
       ref="dialog"
-      class="work-gallery__modal"
+      :class="[
+        'work-gallery__modal',
+        { 'work-gallery__modal--closing': isClosing },
+      ]"
       :aria-label="`${t.workContent.gallery}: ${props.title}`"
       @close="onClose"
+      @cancel.prevent="close"
       @click="onBackdropClick"
       @keydown.left.prevent="carousel.previous()"
       @keydown.right.prevent="carousel.next()"
@@ -69,8 +73,16 @@ const props = defineProps({
   title: { type: String, required: true },
 });
 const { t } = usePortfolio();
-const { carousel, dialog, isOpen, open, close, onClose, onBackdropClick } =
-  useGalleryDialog(() => props.images);
+const {
+  carousel,
+  dialog,
+  isOpen,
+  isClosing,
+  open,
+  close,
+  onClose,
+  onBackdropClick,
+} = useGalleryDialog(() => props.images);
 </script>
 
 <style scoped lang="scss">
@@ -105,6 +117,17 @@ const { carousel, dialog, isOpen, open, close, onClose, onBackdropClick } =
 }
 .work-gallery__modal::backdrop {
   background: #000c;
+  opacity: 1;
+  transition: opacity 220ms ease-out;
+}
+.work-gallery__modal--closing::backdrop {
+  opacity: 0;
+  transition: opacity 160ms ease-in;
+}
+@starting-style {
+  .work-gallery__modal[open]::backdrop {
+    opacity: 0;
+  }
 }
 .work-gallery__heading {
   display: flex;
@@ -124,6 +147,12 @@ const { carousel, dialog, isOpen, open, close, onClose, onBackdropClick } =
 @media (max-width: 767px) {
   .work-gallery__heading h3 {
     font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-gallery__modal::backdrop {
+    transition: none;
   }
 }
 </style>
