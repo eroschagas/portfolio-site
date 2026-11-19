@@ -13,6 +13,7 @@
     <WorkGallery
       v-if="images.length"
       :images="images"
+      :image-metadata="imageMetadata"
       :title="props.project.getName(language)"
     />
     <div v-if="props.project.subprojects.length" class="work-project__details">
@@ -48,6 +49,11 @@ const { language, t } = usePortfolio();
 const config = useRuntimeConfig();
 const catalog = new WorkImageCatalog(config.public.workImages);
 const images = computed(() => catalog.getImages(props.project.getId()));
+const imageMetadata = computed(() =>
+  images.value.map((_, index) =>
+    props.project.getImageMetadata(index, language.value)
+  )
+);
 </script>
 
 <style scoped lang="scss">

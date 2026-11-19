@@ -21,7 +21,10 @@
       >
         <img
           :src="image"
-          :alt="`${props.title} — ${t.workContent.image} ${index + 1}`"
+          :alt="
+            props.imageMetadata[index]?.alt ||
+            `${props.title} — ${t.workContent.image} ${index + 1}`
+          "
           width="1200"
           height="750"
           loading="lazy"
@@ -55,9 +58,14 @@
 
 <script setup lang="ts">
 import type { PropType } from "vue";
+import type { WorkImageMetadata } from "~/models/WorkProject";
 import { ImagePreviewLayout } from "~/models/ImagePreviewLayout";
 const props = defineProps({
   images: { type: Array as PropType<string[]>, required: true },
+  imageMetadata: {
+    type: Array as PropType<WorkImageMetadata[]>,
+    default: () => [],
+  },
   title: { type: String, required: true },
 });
 const emit = defineEmits({ open: (index: number) => Number.isInteger(index) });

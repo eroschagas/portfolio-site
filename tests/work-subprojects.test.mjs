@@ -31,6 +31,38 @@ test("existing projects and explicit empty subprojects remain compatible", () =>
   );
 });
 
+test("image metadata is optional and follows the image index and selected language", () => {
+  const project = new WorkProject({
+    ...data("gallery"),
+    images: [
+      {
+        alt: { en: "List", pt: "Lista" },
+        description: { en: "First screen", pt: "Primeira tela" },
+      },
+      {
+        alt: { en: "Form", pt: "Formulário" },
+        description: { en: "Second screen", pt: "Segunda tela" },
+      },
+    ],
+  });
+  assert.deepEqual(project.getImageMetadata(0, "pt"), {
+    alt: "Lista",
+    description: "Primeira tela",
+  });
+  assert.deepEqual(project.getImageMetadata(1, "en"), {
+    alt: "Form",
+    description: "Second screen",
+  });
+  assert.deepEqual(project.getImageMetadata(2, "en"), {
+    alt: "",
+    description: "",
+  });
+  assert.deepEqual(
+    new WorkProject(data("old-project")).getImageMetadata(0, "pt"),
+    { alt: "", description: "" }
+  );
+});
+
 test("subprojects use the same model, localized content and image lookup IDs", () => {
   const project = new WorkProject({
     ...data("parent"),

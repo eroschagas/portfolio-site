@@ -27,15 +27,23 @@
         >⤢ {{ t.workContent.enlarge }}</span
       >
     </button>
-    <img
-      v-else
-      class="gallery-viewer__image"
-      :src="props.images[props.index]"
-      :alt="imageDescription"
-      width="1200"
-      height="750"
-      draggable="false"
-    />
+    <div v-else class="gallery-viewer__stage">
+      <img
+        class="gallery-viewer__image"
+        :src="props.images[props.index]"
+        :alt="imageDescription"
+        :aria-describedby="metadata.description ? captionId : undefined"
+        width="1200"
+        height="750"
+        draggable="false"
+      />
+      <GalleryImageCaption
+        v-if="metadata.description"
+        :description="metadata.description"
+        :description-id="captionId"
+        :visible="descriptionVisible"
+      />
+    </div>
     <div class="gallery-viewer__controls">
       <button
         v-if="props.images.length > 1"
@@ -86,22 +94,42 @@
           <path d="M5 12h14m-6-6 6 6-6 6" />
         </svg>
       </button>
+      <GalleryDescriptionToggle
+        v-if="props.expanded && metadata.description"
+        class="gallery-viewer__description-toggle"
+        :visible="descriptionVisible"
+        :description-id="captionId"
+        @toggle="descriptionVisible = !descriptionVisible"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { PropType } from "vue";
+import type { WorkImageMetadata } from "~/models/WorkProject";
+import GalleryImageCaption from "./GalleryImageCaption.vue";
+import GalleryDescriptionToggle from "./GalleryDescriptionToggle.vue";
 const props = defineProps({
   images: { type: Array as PropType<string[]>, required: true },
+  imageMetadata: {
+    type: Array as PropType<WorkImageMetadata[]>,
+    default: () => [],
+  },
   title: { type: String, required: true },
   index: { type: Number, required: true },
   expanded: { type: Boolean, default: false },
 });
 const emit = defineEmits(["open", "previous", "next"]);
 const { t } = usePortfolio();
+const captionId = useId();
+const descriptionVisible = ref(true);
+const metadata = computed(
+  () => props.imageMetadata[props.index] ?? { alt: "", description: "" }
+);
 const imageDescription = computed(
   () =>
+    metadata.value.alt ||
     `${props.title} — ${t.value.workContent.image} ${props.index + 1} / ${
       props.images.length
     }`
@@ -163,11 +191,17 @@ const onTouchEnd = (event: TouchEvent) => {
   font-size: 12px;
 }
 .gallery-viewer__controls {
+  position: relative;
+  min-height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
   margin-top: 14px;
+}
+.gallery-viewer__description-toggle {
+  position: absolute;
+  right: 0;
 }
 .gallery-viewer__arrow {
   display: grid;
@@ -216,6 +250,11 @@ const onTouchEnd = (event: TouchEvent) => {
   height: 100%;
   aspect-ratio: auto;
   background: var(--bg);
+}
+.gallery-viewer__stage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
 }
 .gallery-viewer--expanded .gallery-viewer__controls {
   margin-top: 0;

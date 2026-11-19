@@ -7,6 +7,41 @@ import { ImageCarouselState } from "../app/models/ImageCarouselState.ts";
 import { WorkImageCatalog } from "../app/services/WorkImageCatalog.ts";
 import { WorkImageManifest } from "../build/WorkImageManifest.ts";
 import { WorkPeriod } from "../app/models/WorkPeriod.ts";
+import socarrao from "../app/data/work/socarrao.ts";
+
+test("every work screenshot has positional alt and description in both languages", () => {
+  const manifest = new WorkImageManifest("public/work").generate();
+  const projects = new Map();
+  const collect = (items) =>
+    items.forEach((project) => {
+      projects.set(project.id, project);
+      collect(project.subprojects ?? []);
+    });
+  collect(socarrao.projects);
+  Object.entries(manifest).forEach(([id, images]) => {
+    const project = projects.get(id);
+    assert.ok(project, `Missing project for ${id}`);
+    assert.equal(
+      project.images?.length,
+      images.length,
+      `Metadata count for ${id}`
+    );
+    project.images.forEach((image, index) => {
+      ["en", "pt"].forEach((language) => {
+        ["alt", "description"].forEach((field) => {
+          assert.ok(
+            image[field][language]?.trim(),
+            `${id} image ${index + 1}: ${field} ${language}`
+          );
+          assert.doesNotMatch(
+            image[field][language],
+            /\uFFFD|Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]/u
+          );
+        });
+      });
+    });
+  });
+});
 
 test("work periods preserve month/year text and expose semantic dates", () => {
   const period = new WorkPeriod("01/2024", "12/2025");
@@ -22,7 +57,7 @@ test("work periods reject malformed dates, invalid months and reversed ranges", 
     (value) => {
       assert.throws(() => new WorkPeriod(value, "12/2026"));
       if (value) assert.throws(() => new WorkPeriod("01/2026", value));
-    },
+    }
   );
   assert.throws(() => new WorkPeriod("02/2026", "01/2026"));
 });
@@ -55,7 +90,7 @@ test("periods sort current work first by start, then completed work by end and s
   ]);
   assert.equal(
     new WorkPeriod("01/2026").compareRecent(new WorkPeriod("01/2026")),
-    0,
+    0
   );
 });
 
@@ -91,13 +126,13 @@ test("manifest discovers images, ignores non-images and directories, and sorts n
   try {
     assert.deepEqual(
       new WorkImageManifest(join(root, "absent")).generate(),
-      {},
+      {}
     );
     mkdirSync(join(root, "project"));
     mkdirSync(join(root, "empty"));
     mkdirSync(join(root, "project", "nested.png"));
     ["10.png", "02.webp", "01 image.JPG", "notes.txt"].forEach((name) =>
-      writeFileSync(join(root, "project", name), "", "utf8"),
+      writeFileSync(join(root, "project", name), "", "utf8")
     );
     const manifest = new WorkImageManifest(root).generate();
     assert.deepEqual(manifest.empty, []);

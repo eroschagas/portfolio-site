@@ -1,6 +1,11 @@
 <template>
   <div v-if="props.images.length" class="work-gallery">
-    <GalleryPreview :images="props.images" :title="props.title" @open="open" />
+    <GalleryPreview
+      :images="props.images"
+      :image-metadata="props.imageMetadata"
+      :title="props.title"
+      @open="open"
+    />
     <dialog
       ref="dialog"
       class="work-gallery__modal"
@@ -37,6 +42,7 @@
       <GalleryViewer
         v-if="isOpen"
         :images="props.images"
+        :image-metadata="props.imageMetadata"
         :title="props.title"
         :index="carousel.index"
         expanded
@@ -49,11 +55,16 @@
 
 <script setup lang="ts">
 import type { PropType } from "vue";
+import type { WorkImageMetadata } from "~/models/WorkProject";
 import { useGalleryDialog } from "~/composables/useGalleryDialog";
 import GalleryViewer from "./GalleryViewer.vue";
 import GalleryPreview from "./GalleryPreview.vue";
 const props = defineProps({
   images: { type: Array as PropType<string[]>, required: true },
+  imageMetadata: {
+    type: Array as PropType<WorkImageMetadata[]>,
+    default: () => [],
+  },
   title: { type: String, required: true },
 });
 const { t } = usePortfolio();

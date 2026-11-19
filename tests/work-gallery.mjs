@@ -179,6 +179,15 @@ class WorkGalleryAudit {
           await modal.locator("img").getAttribute("src"),
           expectedSource
         );
+        if (project.images?.length) {
+          await this.auditImageMetadata(
+            page,
+            modal,
+            thumbnail,
+            project,
+            language
+          );
+        }
         await this.auditModalLayout(page, modal);
         await page.keyboard.press("Escape");
         await page.waitForFunction(
@@ -239,18 +248,36 @@ class WorkGalleryAudit {
       await page.setViewportSize(viewport);
       const geometry = await modal.evaluate((element) => {
         const bounds = element.getBoundingClientRect();
+        const toggle = element
+          .querySelector(".gallery-caption__toggle")
+          ?.getBoundingClientRect();
+        const close = element
+          .querySelector(".work-gallery__close")
+          .getBoundingClientRect();
+        const controls = element
+          .querySelector(".gallery-viewer__controls")
+          .getBoundingClientRect();
         const descendants = [
           element,
           element.querySelector(".gallery-viewer"),
           element.querySelector("img"),
           element.querySelector(".work-gallery__close"),
           element.querySelector(".gallery-viewer__controls"),
+          ...element.querySelectorAll(
+            ".gallery-caption, .gallery-caption__toggle, .gallery-caption__description"
+          ),
         ];
         return {
           x: bounds.x,
           y: bounds.y,
           width: bounds.width,
           height: bounds.height,
+          toggleAligned:
+            !toggle ||
+            (Math.abs(toggle.right - close.right) < 1 &&
+              Math.abs(
+                toggle.y + toggle.height / 2 - controls.y - controls.height / 2
+              ) < 1),
           fits: descendants.every((child) => {
             const rect = child.getBoundingClientRect();
             return (
@@ -279,6 +306,7 @@ class WorkGalleryAudit {
       assert.equal(geometry.y, 0);
       assert.equal(geometry.width, viewport.width);
       assert.equal(geometry.height, viewport.height);
+      assert.equal(geometry.toggleAligned, true);
       assert.equal(
         geometry.fits,
         true,
@@ -289,6 +317,70 @@ class WorkGalleryAudit {
       assert.equal(geometry.imageFit, "contain");
     }
     await page.setViewportSize(initialViewport);
+  }
+
+  async auditImageMetadata(page, modal, thumbnail, project, language) {
+    const files = fs
+      .readdirSync(`public/work/${project.id}`)
+      .filter((name) => /\.(avif|gif|jpe?g|png|svg|webp)$/i.test(name))
+      .sort((left, right) =>
+        left.localeCompare(right, "en", { numeric: true })
+      );
+    assert.equal(
+      await thumbnail.locator("img").getAttribute("alt"),
+      project.images[0].alt[language]
+    );
+    const caption = modal.locator(".gallery-caption__description");
+    const toggle = modal.getByRole("button", {
+      name: language === "en" ? "Hide description" : "Ocultar descrição",
+      exact: true,
+    });
+    await toggle.focus();
+    await page.keyboard.press("Enter");
+    assert.equal(await caption.isVisible(), false);
+    assert.equal(
+      await modal
+        .locator(".gallery-caption__toggle")
+        .getAttribute("aria-expanded"),
+      "false"
+    );
+    for (const [index, metadata] of project.images.entries()) {
+      assert.equal(
+        await modal.locator("img").getAttribute("src"),
+        `/work/${project.id}/${encodeURIComponent(files[index])}`
+      );
+      assert.equal(
+        await modal.locator("img").getAttribute("alt"),
+        metadata.alt[language]
+      );
+      assert.equal(
+        (await caption.textContent()).trim(),
+        metadata.description[language]
+      );
+      assert.equal(await caption.isVisible(), false);
+      assert.equal(
+        await modal.locator("img").getAttribute("aria-describedby"),
+        await caption.getAttribute("id")
+      );
+      if (files.length > 1) await page.keyboard.press("ArrowRight");
+    }
+    await modal
+      .getByRole("button", {
+        name: language === "en" ? "Show description" : "Exibir descrição",
+        exact: true,
+      })
+      .click();
+    assert.equal(await caption.isVisible(), true);
+    assert.equal(
+      (await caption.textContent()).trim(),
+      project.images[0].description[language]
+    );
+    assert.equal(
+      await modal
+        .locator(".gallery-caption__toggle")
+        .getAttribute("aria-expanded"),
+      "true"
+    );
   }
 
   async waitForServer() {
