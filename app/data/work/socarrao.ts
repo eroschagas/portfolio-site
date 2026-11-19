@@ -21,17 +21,6 @@ const company: WorkCompanyData = {
       },
     },
     {
-      id: "socarrao-private-seller-listings",
-      name: {
-        en: "Private Seller Listings",
-        pt: "Anunciante Particular SóCarrão",
-      },
-      description: {
-        en: "Development of a new vehicle listing structure for private sellers, using reusable components and a more robust architecture. The implementation introduced more direct and efficient communication with the backend, improving performance and maintainability while establishing a foundation for evolving the listing experience.",
-        pt: "Desenvolvimento de uma nova estrutura de anúncios de veículos voltada a pessoas físicas, utilizando componentes reutilizáveis e uma arquitetura mais robusta. A implementação trouxe uma comunicação mais direta e eficiente com o backend, melhorando o desempenho e a manutenibilidade e criando uma base para a evolução da experiência de anúncio.",
-      },
-    },
-    {
       id: "socarrao-backend-architecture-migration",
       name: {
         en: "Front-end Migration to the New Backend Architecture",
@@ -160,14 +149,60 @@ const company: WorkCompanyData = {
       ],
     },
     {
-      id: "socarrao-dealership-portal",
+      id: "socarrao-website",
       name: {
-        en: "Partner Dealership Portal",
-        pt: "Área Logada SóCarrão",
+        en: "SóCarrão Website",
+        pt: "Site SóCarrão",
       },
       description: {
-        en: "Development of the authenticated area for SóCarrão's partner dealerships. Features include a dashboard with performance charts and statistics, vehicle creation and management, featured listing management, financial information and boleto payments. The portal also provides access to vehicles advertised by private users and tools for managing leads.",
-        pt: "Desenvolvimento da área logada destinada às revendas parceiras da SóCarrão. As funcionalidades incluem dashboard com gráficos e estatísticas de desempenho, cadastro e gestão de veículos e seus respectivos destaques, consulta de informações financeiras e pagamento de boletos. O portal também permite visualizar veículos anunciados por usuários e gerenciar leads.",
+        en: "Front-end development and maintenance of the SóCarrão vehicle listing website, connecting buyers, private sellers and dealerships. The project brings together the platform's vehicle listing experience, private seller flows and authenticated tools for partner dealerships.",
+        pt: "Desenvolvimento e manutenção do front-end do site de anúncios de veículos da SóCarrão, conectando compradores, anunciantes particulares e revendas. O projeto reúne a experiência de anúncios de veículos da plataforma, os fluxos para anunciantes particulares e as ferramentas da área logada para revendas parceiras.",
+      },
+      subprojects: [
+        {
+          id: "socarrao-private-seller-listings",
+          name: {
+            en: "Private Seller Listings",
+            pt: "Anunciante Particular SóCarrão",
+          },
+          description: {
+            en: "Development of a new vehicle listing structure for private sellers, using reusable components and a more robust architecture. The implementation introduced more direct and efficient communication with the backend, improving performance and maintainability while establishing a foundation for evolving the listing experience.",
+            pt: "Desenvolvimento de uma nova estrutura de anúncios de veículos voltada a pessoas físicas, utilizando componentes reutilizáveis e uma arquitetura mais robusta. A implementação trouxe uma comunicação mais direta e eficiente com o backend, melhorando o desempenho e a manutenibilidade e criando uma base para a evolução da experiência de anúncio.",
+          },
+        },
+        {
+          id: "socarrao-dealership-portal",
+          name: {
+            en: "Partner Dealership Portal",
+            pt: "Área Logada SóCarrão",
+          },
+          description: {
+            en: "Development of the authenticated area for SóCarrão's partner dealerships. Features include a dashboard with performance charts and statistics, vehicle creation and management, featured listing management, financial information and boleto payments. The portal also provides access to vehicles advertised by private users and tools for managing leads.",
+            pt: "Desenvolvimento da área logada destinada às revendas parceiras da SóCarrão. As funcionalidades incluem dashboard com gráficos e estatísticas de desempenho, cadastro e gestão de veículos e seus respectivos destaques, consulta de informações financeiras e pagamento de boletos. O portal também permite visualizar veículos anunciados por usuários e gerenciar leads.",
+          },
+        },
+        {
+          id: "socarrao-website-search",
+          name: {
+            en: "Vehicle Search",
+            pt: "Busca de Veículos",
+          },
+          description: {
+            en: "Complete rebuild of the vehicle search experience, with an entirely redesigned layout developed using AI assistance. The new search introduced exclusionary filters that show how many vehicles match the selected criteria before the filters are applied. Search URLs also became dynamic, changing according to the selected state, city, brand and model.",
+            pt: "Reformulação completa da busca de veículos, com o layout inteiramente refeito com auxílio de IA. A nova busca passou a contar com filtros excludentes que mostram quantos veículos correspondem aos critérios selecionados antes de aplicar os filtros. As URLs de busca também se tornaram dinâmicas, mudando conforme o estado, a cidade, a marca e o modelo selecionados.",
+          },
+        },
+      ],
+    },
+    {
+      id: "socarrao-growthbook-ab-testing",
+      name: {
+        en: "A/B Testing with GrowthBook",
+        pt: "Teste A/B com GrowthBook",
+      },
+      description: {
+        en: "Implementation of an A/B test on the SóCarrão platform using GrowthBook to compare different variants of an experience. A cookie stored the identifier used by GrowthBook, and the selected variant was rendered on the server side. Delivering the variant in the initial HTML avoided layout shifts caused by switching variants after the page loaded, preventing related CLS issues.",
+        pt: "Implementação de um teste A/B na plataforma SóCarrão utilizando o GrowthBook para comparar diferentes variantes de uma experiência. Um cookie armazenava o identificador utilizado pelo GrowthBook, e a variante selecionada era renderizada no lado do servidor. A entrega da variante no HTML inicial evitava deslocamentos de layout causados pela troca de variantes após o carregamento da página, prevenindo problemas de CLS relacionados a essa troca.",
       },
     },
   ],

@@ -3,6 +3,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import socarrao from "../app/data/work/socarrao.ts";
 
 // Run after npm run build:
 // npm exec --yes --package=playwright -- node tests/work-details.mjs
@@ -43,6 +44,9 @@ class WorkDetailsAudit {
           const html = await response.text();
           assert.ok(!html.includes('<details class="work-subprojects"'));
           assert.ok(!html.includes('id="socarrao-internal-users"'));
+          assert.ok(html.includes('id="socarrao-website"'));
+          assert.ok(!html.includes('id="socarrao-private-seller-listings"'));
+          assert.ok(!html.includes('id="socarrao-dealership-portal"'));
           assert.ok(
             html.includes('id="socarrao-internal-management-platform"')
           );
@@ -53,13 +57,16 @@ class WorkDetailsAudit {
           );
           const panel = page.locator(".work-subprojects").first();
           await panel.waitFor();
-          const toggle = panel.locator("summary");
+          const toggle = panel.locator(":scope > summary");
           assert.match(
             await toggle.textContent(),
             language === "en" ? /Details \(10\)/ : /Detalhes \(10\)/
           );
           assert.equal(await panel.locator(".work-project").count(), 0);
-          assert.equal(await page.locator(".work-project").count(), 5);
+          assert.equal(
+            await page.locator(".work-project").count(),
+            socarrao.projects.length
+          );
           const requests = await page.evaluate(
             () =>
               performance
