@@ -1,9 +1,8 @@
 <template>
-  <button
-    type="button"
+  <IconButton
     class="gallery-caption__toggle"
-    :aria-label="label"
-    :title="label"
+    :label="label"
+    variant="secondary"
     :aria-expanded="props.visible"
     :aria-controls="props.descriptionId"
     @click="emit('toggle')"
@@ -30,10 +29,12 @@
         <circle cx="12" cy="12" r="3" />
       </template>
     </svg>
-  </button>
+  </IconButton>
 </template>
 
 <script setup lang="ts">
+import IconButton from "../shared/IconButton.vue";
+
 const props = defineProps({
   visible: { type: Boolean, required: true },
   descriptionId: { type: String, required: true },
@@ -46,27 +47,3 @@ const label = computed(() =>
     : t.value.workContent.showDescription
 );
 </script>
-
-<style scoped lang="scss">
-.gallery-caption__toggle {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  background: #20251c;
-  color: var(--text);
-  cursor: pointer;
-
-  &:hover {
-    border-color: var(--accent);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
-}
-</style>

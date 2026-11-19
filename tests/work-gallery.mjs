@@ -188,8 +188,15 @@ class WorkGalleryAudit {
             language
           );
         }
+        if (project.id === "socarrao-internal-management-platform") {
+          await this.auditIconButtons(page, modal);
+        }
         await this.auditModalLayout(page, modal);
-        await page.keyboard.press("Escape");
+        if (project.images?.length > 1) {
+          await modal.locator(".work-gallery__close").click();
+        } else {
+          await page.keyboard.press("Escape");
+        }
         await page.waitForFunction(
           () =>
             !document.querySelector("dialog[open]") &&
@@ -381,6 +388,33 @@ class WorkGalleryAudit {
         .getAttribute("aria-expanded"),
       "true"
     );
+  }
+
+  async auditIconButtons(page, modal) {
+    const close = modal.locator(".work-gallery__close");
+    const eye = modal.locator(".gallery-caption__toggle");
+    const arrow = modal.locator(".gallery-viewer__arrow").first();
+    const colors = (button) =>
+      button.evaluate((element) => {
+        const style = getComputedStyle(element);
+        return {
+          color: style.color,
+          background: style.backgroundColor,
+          border: style.borderColor,
+        };
+      });
+    await page.mouse.move(0, 0);
+    const secondary = await colors(eye);
+    assert.deepEqual(await colors(close), secondary);
+    assert.notEqual((await colors(arrow)).color, secondary.color);
+    await close.hover();
+    const hovered = await colors(close);
+    assert.notEqual(hovered.border, secondary.border);
+    await eye.hover();
+    assert.deepEqual(await colors(eye), hovered);
+    await arrow.hover();
+    assert.equal((await colors(arrow)).border, hovered.border);
+    await page.mouse.move(0, 0);
   }
 
   async waitForServer() {

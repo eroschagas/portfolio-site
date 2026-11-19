@@ -17,10 +17,10 @@
     >
       <div class="work-gallery__heading">
         <h3>{{ props.title }}</h3>
-        <button
-          type="button"
+        <IconButton
           class="work-gallery__close"
-          :aria-label="t.workContent.close"
+          :label="t.workContent.close"
+          variant="secondary"
           autofocus
           @click="close"
         >
@@ -37,7 +37,7 @@
           >
             <path d="m6 6 12 12M18 6 6 18" />
           </svg>
-        </button>
+        </IconButton>
       </div>
       <GalleryViewer
         v-if="isOpen"
@@ -55,6 +55,7 @@
 
 <script setup lang="ts">
 import type { PropType } from "vue";
+import IconButton from "../shared/IconButton.vue";
 import type { WorkImageMetadata } from "~/models/WorkProject";
 import { useGalleryDialog } from "~/composables/useGalleryDialog";
 import GalleryViewer from "./GalleryViewer.vue";
@@ -119,21 +120,6 @@ const { carousel, dialog, isOpen, open, close, onClose, onBackdropClick } =
   white-space: nowrap;
   font-size: 18px;
   font-weight: 500;
-}
-.work-gallery__close {
-  display: grid;
-  place-items: center;
-  padding: 0;
-  line-height: 1;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  color: var(--text);
-  background: #20251c;
-  cursor: pointer;
-  font-size: 26px;
 }
 @media (max-width: 767px) {
   .work-gallery__heading h3 {

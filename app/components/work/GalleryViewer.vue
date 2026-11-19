@@ -45,11 +45,11 @@
       />
     </div>
     <div class="gallery-viewer__controls">
-      <button
+      <IconButton
         v-if="props.images.length > 1"
-        type="button"
         class="gallery-viewer__arrow"
-        :aria-label="t.workContent.previous"
+        :label="t.workContent.previous"
+        variant="primary"
         @click="emit('previous')"
       >
         <svg
@@ -66,17 +66,17 @@
         >
           <path d="M19 12H5m6-6-6 6 6 6" />
         </svg>
-      </button>
+      </IconButton>
       <p class="gallery-viewer__counter" aria-live="polite" aria-atomic="true">
         <span class="gallery-viewer__current">{{ props.index + 1 }}</span>
         <span>/</span>
         <span class="gallery-viewer__total">{{ props.images.length }}</span>
       </p>
-      <button
+      <IconButton
         v-if="props.images.length > 1"
-        type="button"
         class="gallery-viewer__arrow"
-        :aria-label="t.workContent.next"
+        :label="t.workContent.next"
+        variant="primary"
         @click="emit('next')"
       >
         <svg
@@ -93,7 +93,7 @@
         >
           <path d="M5 12h14m-6-6 6 6-6 6" />
         </svg>
-      </button>
+      </IconButton>
       <GalleryDescriptionToggle
         v-if="props.expanded && metadata.description"
         class="gallery-viewer__description-toggle"
@@ -107,6 +107,7 @@
 
 <script setup lang="ts">
 import type { PropType } from "vue";
+import IconButton from "../shared/IconButton.vue";
 import type { WorkImageMetadata } from "~/models/WorkProject";
 import GalleryImageCaption from "./GalleryImageCaption.vue";
 import GalleryDescriptionToggle from "./GalleryDescriptionToggle.vue";
@@ -202,24 +203,6 @@ const onTouchEnd = (event: TouchEvent) => {
 .gallery-viewer__description-toggle {
   position: absolute;
   right: 0;
-}
-.gallery-viewer__arrow {
-  display: grid;
-  place-items: center;
-  padding: 0;
-  line-height: 1;
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  background: #20251c;
-  color: var(--accent);
-  cursor: pointer;
-  font-size: 20px;
-}
-.gallery-viewer__arrow:hover {
-  border-color: var(--accent);
 }
 .gallery-viewer__counter {
   display: grid;
