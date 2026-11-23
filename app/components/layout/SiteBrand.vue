@@ -1,5 +1,7 @@
 <template>
-  <NuxtLink :class="['brand', { 'brand--compact': props.compact }]" to="/"
+  <NuxtLink
+    :class="['brand', { 'brand--compact': props.compact }]"
+    :to="localePath('/')"
     >e<span>.</span
     ><small v-if="props.showDetails"
       >{{ profile.name }} / {{ t.header.role }}</small
@@ -12,6 +14,7 @@ const props = defineProps({
   showDetails: { type: Boolean, default: false },
   compact: { type: Boolean, default: false },
 });
+const localePath = useLocalePath();
 const { t } = usePortfolio();
 </script>
 <style scoped lang="scss">
@@ -27,7 +30,9 @@ const { t } = usePortfolio();
   color: var(--accent);
 }
 .brand small {
-  font: 12px "DM Sans", sans-serif;
+  font:
+    12px "DM Sans",
+    sans-serif;
   letter-spacing: 0;
   margin-left: 17px;
   color: var(--muted);

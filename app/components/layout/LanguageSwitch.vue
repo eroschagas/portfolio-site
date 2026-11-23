@@ -1,37 +1,31 @@
 <template>
   <div class="language" :aria-label="t.language">
-    <button
+    <NuxtLink
       v-for="locale in ['pt', 'en'] as const"
       :key="locale"
-      :aria-pressed="language === locale"
+      :aria-current="language === locale ? 'true' : undefined"
+      :to="{
+        path: route.path,
+        query: { ...route.query, lang: locale },
+        hash: mounted ? route.hash : '',
+      }"
       :class="[
         'language__button',
         { 'language__button--active': language === locale },
       ]"
-      @click="selectLanguage(locale)"
     >
       {{ locale.toUpperCase() }}
-    </button>
+    </NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Language } from "~/models/Project";
 const { language, t } = usePortfolio();
 const route = useRoute();
-const selectLanguage = (locale: Language) => {
-  language.value = locale;
-  if ("lang" in route.query) {
-    return navigateTo(
-      {
-        path: route.path,
-        query: { ...route.query, lang: locale },
-        hash: route.hash,
-      },
-      { replace: true }
-    );
-  }
-};
+const mounted = ref(false);
+onMounted(() => {
+  mounted.value = true;
+});
 </script>
 
 <style scoped lang="scss">
@@ -41,6 +35,9 @@ const selectLanguage = (locale: Language) => {
   gap: 6px;
 }
 .language__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 44px;
   min-height: 44px;
   background: none;
@@ -50,7 +47,7 @@ const selectLanguage = (locale: Language) => {
   padding: 9px 5px;
   font-size: 12px;
 }
-.language__button + button {
+.language__button + .language__button {
   border-left: 1px solid var(--border);
   padding-left: 12px;
 }

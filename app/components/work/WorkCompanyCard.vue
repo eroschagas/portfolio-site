@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     class="project-card work-company-card"
-    :to="`/work/${props.company.slug}`"
+    :to="localePath(`/work/${props.company.slug}`)"
   >
     <div class="project-card__top">
       <span>{{ String(props.index + 1).padStart(2, "0") }}</span
@@ -26,6 +26,7 @@ const props = defineProps({
   company: { type: WorkCompany, required: true },
   index: { type: Number, default: 0 },
 });
+const localePath = useLocalePath();
 const { language, t } = usePortfolio();
 </script>
 

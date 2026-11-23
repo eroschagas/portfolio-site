@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="props.category.path"
+    :to="localePath(props.category.path)"
     :class="['project-card', `project-card--${props.category.kind}`]"
     ><div class="project-card__top">
       <span>0{{ props.index + 1 }}</span
@@ -22,6 +22,7 @@ const props = defineProps({
   category: { type: CollectionCategory, required: true },
   index: { type: Number, default: 0 },
 });
+const localePath = useLocalePath();
 const { t } = usePortfolio();
 </script>
 <style scoped lang="scss">
@@ -33,7 +34,9 @@ const { t } = usePortfolio();
   align-items: center;
   justify-content: center;
   color: #c6f589;
-  font: 80px "Space Grotesk", sans-serif;
+  font:
+    80px "Space Grotesk",
+    sans-serif;
   background: radial-gradient(ellipse, #c6f5890d, transparent 65%);
 }
 .project-card--work .project-card__art {

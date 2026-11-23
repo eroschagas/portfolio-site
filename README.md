@@ -103,11 +103,42 @@ Validação: `node --experimental-strip-types --test tests/work-models.test.mjs`
 - `app/composables/useGalleryDialog.ts`: integração do modal com o estado do carrossel, pré-carregamento, bloqueio da rolagem e limpeza no ciclo de vida.
 - Os componentes usam SFCs com `<script setup lang="ts">` e estilos SCSS locais com `scoped`. `app/assets/main.scss` mantém fontes, variáveis, resets e utilitários compartilhados; os mixins em `app/assets/styles` reutilizam a apresentação dos cards e das coleções sem depender de estilos globais de componentes.
 
-Personalize nome, stack e redes sociais em `app/data/profile.ts`. O parâmetro global `?lang=pt` ou `?lang=en` define o idioma em qualquer página e atualiza o cookie `portfolio-language`. Sem um parâmetro válido, usa-se a preferência do cookie; se não houver uma preferência válida, o cookie é criado em inglês. Por exemplo: `/work/econet?lang=pt`. Valores inválidos ou parâmetros `lang` repetidos são ignorados. O switch também atualiza o parâmetro quando ele já está na URL, preservando outros parâmetros e o fragmento. Sem `lang` na URL, o switch altera apenas a preferência salva. O header ocupa a largura da janela e fica fixo durante a rolagem.
+Personalize nome, stack e redes sociais em `app/data/profile.ts`. O parâmetro global `?lang=pt` ou `?lang=en` define o idioma em qualquer página e atualiza o cookie `portfolio-language`. Sem um parâmetro válido, usa-se a preferência do cookie; se não houver uma preferência válida, o cookie é criado em inglês. Por exemplo: `/work/econet?lang=pt`. Valores inválidos ou parâmetros `lang` repetidos são ignorados. O seletor de idioma usa links com o parâmetro explícito, preservando outros parâmetros e o fragmento. Os links internos mantêm o idioma selecionado. O header ocupa a largura da janela e fica fixo durante a rolagem.
 
 Valide a resolução do idioma com `node --experimental-strip-types --test tests/language-preference.test.mjs`. Após o build, `npm exec --yes --package=playwright -- node tests/language-routing.mjs` verifica a renderização no servidor, a criação do cookie, a prioridade do parâmetro e a navegação no Chrome.
 
 ## Nuxt
+
+### SEO, idiomas e descoberta
+
+O domínio oficial é `https://eros-chagas.netlify.app`, configurado em `nuxt.config.ts`. Para mudar de domínio, configure `NUXT_PUBLIC_SITE_URL` no ambiente de build e execução; veja `.env.example`. Não use URLs de preview como domínio canônico.
+
+Cada página tem duas URLs indexáveis: `?lang=en` e `?lang=pt`. O parâmetro tem prioridade sobre o cookie, portanto cada URL entrega seu idioma no HTML inicial mesmo para visitantes com outra preferência salva. Canônicos próprios e alternates `en`, `pt-BR` e `x-default` são gerados por `usePageSeo`; a navegação e os links de idioma preservam URLs rastreáveis. As URLs antigas sem parâmetro continuam respeitando o cookie e apontam para a versão explícita correspondente. URLs com barra final nas páginas públicas redirecionam com HTTP 308 para a forma sem barra, preservando os parâmetros.
+
+- `/sitemap.xml`: gerado a partir das páginas principais e dos arquivos `app/data/work/*.ts`, com ambas as versões de idioma e alternates recíprocos. Não inventa datas de modificação.
+- `/robots.txt`: permite rastreamento em produção e referencia o sitemap. Desenvolvimento e previews recebem bloqueio de rastreamento, metadados `noindex` e cabeçalho `X-Robots-Tag`.
+- `/llms.txt`: índice complementar bilíngue gerado com as mesmas rotas, identidade, stack e perfis públicos. Não substitui o HTML ou o sitemap e não garante citação por IA.
+- JSON-LD: `Person`, `WebSite`, `ProfilePage` e `CollectionPage`, com listas dos projetos e links reais. Os dados vêm dos modelos existentes, sem duplicar descrições manualmente.
+- Open Graph e cards sociais: títulos, descrições, URLs e idiomas localizados, com capturas reais da home em `public/social/portfolio-en.png` e `portfolio-pt.png` (1200 × 630).
+
+O conteúdo dos subprojetos de Work está no HTML inicial, dentro de painéis `<details>` recolhidos. Não depende de JavaScript ou de um clique para existir no documento. As imagens continuam usando carregamento preguiçoso.
+
+No Netlify, `CONTEXT=production` habilita indexação; deploy previews e branches ficam fora do índice. Fora do Netlify, builds de produção habilitam indexação por padrão. Defina `NUXT_PUBLIC_INDEXABLE=false` em qualquer ambiente privado e não sobrescreva essa opção com `true` em previews. Estes endpoints são rotas do servidor: publique com SSR (`npm run build` e o adaptador da hospedagem), não apenas a pasta estática `.output/public`. Não configure fallback de todas as URLs para uma página HTML com status 200, pois isso quebraria os 404 reais.
+
+Ao adicionar empresas em Work, o próximo build atualiza o sitemap e o índice complementar automaticamente. Ao alterar projetos, os dados estruturados acompanham as fontes existentes. Ao criar novos tipos de página pública, atualize `discoveryPaths` em `nuxt.config.ts` e use `usePageSeo`. Ao alterar a home, revise as imagens sociais; gere-as novamente com o comando abaixo e execute outro build para incluir os PNGs atualizados:
+
+```bash
+npm run build
+npm exec --yes --package=playwright -- node tests/seo.mjs --capture-social
+npm run build
+npm exec --yes --package=playwright -- node tests/seo.mjs
+```
+
+O teste valida o HTML SSR nos dois idiomas, canônicos, hreflang, XML, JSON-LD, metadados sociais, navegação no navegador, conteúdo dos subprojetos, respostas 404 e proteção de previews. Requer Google Chrome instalado. Testes do modelo de descoberta: `node --experimental-strip-types --test tests/site-discovery.test.mjs`.
+
+Após publicar, confira as mesmas URLs no domínio real, envie `/sitemap.xml` ao Google Search Console e ao Bing Webmaster Tools nas contas do proprietário e acompanhe os relatórios de indexação. Verificações de propriedade exigem os tokens reais dessas plataformas. Confira também eventuais regras de firewall/CDN e autenticação da hospedagem, que podem bloquear crawlers independentemente do código. Nenhuma dessas configurações garante indexação, ranking ou inclusão em respostas de IA.
+
+Referências: [Google Search Essentials](https://developers.google.com/search/docs/essentials), [Google AI features](https://developers.google.com/search/docs/appearance/ai-features), [versões localizadas](https://developers.google.com/search/docs/specialty/international/localized-versions) e [Bing Webmaster Guidelines](https://www.bing.com/webmasters/help/bing-webmaster-guidelines-30fba23a).
 
 ### Responsive regression check
 

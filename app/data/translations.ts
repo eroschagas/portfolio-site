@@ -1,5 +1,10 @@
 export const translations = {
   pt: {
+    seo: {
+      portfolio: "Portfólio",
+      homeDescription:
+        "Portfólio de Eros, engenheiro frontend. Projetos com Vue.js, Nuxt e TypeScript, experiências profissionais e aplicações desenvolvidas com auxílio de IA.",
+    },
     workContent: {
       projects: "Projetos",
       subprojects: "Detalhes",
@@ -73,6 +78,11 @@ export const translations = {
     codeLearning: "Sempre",
   },
   en: {
+    seo: {
+      portfolio: "Portfolio",
+      homeDescription:
+        "Portfolio of Eros, a frontend engineer. Explore Vue.js, Nuxt and TypeScript projects, professional experience and applications built with AI assistance.",
+    },
     workContent: {
       projects: "Projects",
       subprojects: "Details",

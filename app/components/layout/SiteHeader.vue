@@ -2,18 +2,20 @@
   <header class="header">
     <SiteBrand show-details />
     <nav class="header__nav" :aria-label="t.navigation">
-      <NuxtLink class="header__link" to="/">{{ t.header.home }}</NuxtLink
-      ><NuxtLink class="header__link" to="/ai-assisted">{{
+      <NuxtLink class="header__link" :to="localePath('/')">{{
+        t.header.home
+      }}</NuxtLink
+      ><NuxtLink class="header__link" :to="localePath('/ai-assisted')">{{
         t.header.aiAssisted
       }}</NuxtLink
       ><NuxtLink
-        to="/work"
+        :to="localePath('/work')"
         :class="[
           'header__link',
           { 'header__link--active': route.path.startsWith('/work/') },
         ]"
         >{{ t.header.work }}</NuxtLink
-      ><NuxtLink class="header__link" to="/legacy">{{
+      ><NuxtLink class="header__link" :to="localePath('/legacy')">{{
         t.header.legacy
       }}</NuxtLink>
     </nav>
@@ -24,6 +26,7 @@
 <script setup lang="ts">
 import SiteBrand from "./SiteBrand.vue";
 import LanguageSwitch from "./LanguageSwitch.vue";
+const localePath = useLocalePath();
 const { t } = usePortfolio();
 const route = useRoute();
 </script>

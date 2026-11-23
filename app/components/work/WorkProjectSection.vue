@@ -17,20 +17,15 @@
       :title="props.project.getName(language)"
     />
     <div v-if="props.project.subprojects.length" class="work-project__details">
-      <ClientOnly>
-        <WorkSubprojectsPanel :count="props.project.subprojects.length">
-          <WorkProjectSection
-            v-for="(subproject, index) in props.project.subprojects"
-            :key="subproject.getId()"
-            :project="subproject"
-            :index="index"
-            :heading-level="Math.min(props.headingLevel + 1, 6)"
-          />
-        </WorkSubprojectsPanel>
-        <template #fallback>
-          <div class="work-project__details-placeholder" aria-hidden="true" />
-        </template>
-      </ClientOnly>
+      <WorkSubprojectsPanel :count="props.project.subprojects.length">
+        <WorkProjectSection
+          v-for="(subproject, index) in props.project.subprojects"
+          :key="subproject.getId()"
+          :project="subproject"
+          :index="index"
+          :heading-level="Math.min(props.headingLevel + 1, 6)"
+        />
+      </WorkSubprojectsPanel>
     </div>
   </article>
 </template>
@@ -51,8 +46,8 @@ const catalog = new WorkImageCatalog(config.public.workImages);
 const images = computed(() => catalog.getImages(props.project.getId()));
 const imageMetadata = computed(() =>
   images.value.map((_, index) =>
-    props.project.getImageMetadata(index, language.value)
-  )
+    props.project.getImageMetadata(index, language.value),
+  ),
 );
 </script>
 
@@ -78,20 +73,12 @@ const imageMetadata = computed(() =>
 .work-project__details {
   margin-top: 26px;
 }
-.work-project__details-placeholder {
-  height: 55px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
 @media (max-width: 767px) {
   .work-project {
     padding: 28px 0;
   }
   .work-project__description {
     font-size: 14px;
-  }
-  .work-project__details-placeholder {
-    height: 51px;
   }
 }
 </style>

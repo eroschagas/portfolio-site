@@ -90,7 +90,7 @@ class LanguageRoutingAudit {
       await this.assertLanguage(page, context, "en");
       await page.goto(this.origin + "/work?lang=pt&source=share#details");
       await this.assertLanguage(page, context, "pt");
-      await page.getByRole("button", { name: "EN", exact: true }).click();
+      await page.getByRole("link", { name: "EN", exact: true }).click();
       await page.waitForURL((url) => url.searchParams.get("lang") === "en");
       assert.equal(new URL(page.url()).searchParams.get("source"), "share");
       assert.equal(new URL(page.url()).hash, "#details");
@@ -105,12 +105,15 @@ class LanguageRoutingAudit {
       });
       await this.assertLanguage(page, context, "pt");
       assert.ok((await page.title()).startsWith("Legado"));
-      await page.locator('.header nav a[href="/work"]').click();
-      await page.waitForURL((url) => url.pathname === "/work" && !url.search);
+      await page.locator('.header nav a[href="/work?lang=pt"]').click();
+      await page.waitForURL(
+        (url) =>
+          url.pathname === "/work" && url.searchParams.get("lang") === "pt",
+      );
       await this.assertLanguage(page, context, "pt");
-      await page.getByRole("button", { name: "EN", exact: true }).click();
+      await page.getByRole("link", { name: "EN", exact: true }).click();
       await this.assertLanguage(page, context, "en");
-      assert.equal(new URL(page.url()).search, "");
+      assert.equal(new URL(page.url()).search, "?lang=en");
       await page.reload();
       await this.assertLanguage(page, context, "en");
       assert.deepEqual(errors, []);
@@ -141,8 +144,8 @@ class LanguageRoutingAudit {
     );
     assert.equal(
       await page
-        .getByRole("button", { name: language.toUpperCase(), exact: true })
-        .getAttribute("aria-pressed"),
+        .getByRole("link", { name: language.toUpperCase(), exact: true })
+        .getAttribute("aria-current"),
       "true",
     );
   }
