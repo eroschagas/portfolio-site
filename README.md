@@ -24,6 +24,27 @@ Durante `npm run dev`, alterações nos arquivos são recarregadas. Em produçã
 
 ## Arquitetura
 
+### Imagens de AI Assisted
+
+Os projetos de `app/data/ai-assisted.ts` aceitam um campo opcional `images`. Coloque os arquivos em `public/ai-assisted/<projeto>/` e liste-os na ordem de exibição:
+
+```ts
+images: [
+  {
+    src: "/ai-assisted/lunera/01-home.png",
+    alt: { en: "Lunera home screen", pt: "Tela inicial do Lunera" },
+    description: {
+      en: "Optional description of the screen.",
+      pt: "Descrição opcional da tela.",
+    },
+  },
+],
+```
+
+O exemplo deve ser incluído dentro do objeto do projeto, junto de `name`, `description` e `link`, depois de adicionar a imagem real. `src` aceita um caminho a partir de `public` (sem incluir `public` na URL) ou uma URL absoluta HTTP/HTTPS. `alt` deve descrever a imagem nos dois idiomas; `description` é opcional e também bilíngue. Os arquivos não são descobertos automaticamente nesta seção. Projetos sem `images` ou com uma lista vazia continuam sem galeria. O mesmo campo também está disponível para Legacy, que compartilha o modelo e o card.
+
+As miniaturas abrem a galeria existente de Work, com navegação por botões, teclado e toque. Publique um novo build após adicionar as imagens. Nenhuma imagem ilustrativa foi cadastrada nos projetos reais.
+
 ### Empresas e projetos de Work
 
 Cada arquivo TypeScript em `app/data/work/` gera automaticamente um card em `/work`. O nome do arquivo define a rota da empresa: `econet.ts` abre `/work/econet`. Esse arquivo contém a experiência real na Econet Editora (07/2022 a 08/2024, período confirmado pelo autor) e 12 projetos com nomes e descrições bilíngues baseados nas informações fornecidas pelo autor. A apresentação da empresa foi resumida a partir do [site institucional](https://grupo.econeteditora.com.br/sobre-econet.html). As empresas fictícias e suas imagens foram removidas. Os projetos sem imagens não exibem galeria; para adicioná-las, use os respectivos IDs em `public/work/<id>/`.

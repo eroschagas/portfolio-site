@@ -6,6 +6,12 @@
     </div>
     <h2 class="project-card__name">{{ props.project.getName(language) }}</h2>
     <p>{{ props.project.getDescription(language) }}</p>
+    <WorkGallery
+      v-if="images.length"
+      :images="images"
+      :image-metadata="imageMetadata"
+      :title="props.project.getName(language)"
+    />
     <div class="project-card__actions">
       <a
         class="project-card__link"
@@ -28,11 +34,16 @@
 
 <script setup lang="ts">
 import { Project } from "~/models/Project";
+import WorkGallery from "~/components/work/WorkGallery.vue";
 const props = defineProps({
   project: { type: Project, required: true },
   index: { type: Number, default: 0 },
 });
 const { language, t } = usePortfolio();
+const images = computed(() => props.project.getImages());
+const imageMetadata = computed(() =>
+  props.project.getImageMetadata(language.value),
+);
 </script>
 
 <style scoped lang="scss">

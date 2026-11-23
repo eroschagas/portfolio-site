@@ -10,7 +10,9 @@
     border: 1px solid var(--border);
     border-radius: 6px;
     background: #171a16;
-    transition: border-color 0.2s, transform 0.2s;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
   }
   .project-card:hover {
     border-color: #849b68;
@@ -38,7 +40,7 @@
     color: var(--muted);
     margin-top: 12px;
     min-height: 69px;
-    max-width: 270px;
+    // max-width: 270px;
   }
   .project-card__link {
     min-height: 44px;
