@@ -20,7 +20,7 @@ const props = defineProps({
 <style scoped lang="scss">
 .projects__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   margin-top: 34px;
 }

@@ -18,9 +18,9 @@ const companies = new WorkRepository().getCompanies();
 <style scoped lang="scss">
 .work-companies {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 34px;
 }
 @media (max-width: 767px) {
   .work-companies {
