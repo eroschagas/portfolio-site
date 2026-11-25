@@ -28,7 +28,7 @@ export class WorkImageManifest {
       .sort((left, right) => left.localeCompare(right, "en", { numeric: true }))
       .map(
         (file) =>
-          `/work/${encodeURIComponent(projectId)}/${encodeURIComponent(file)}`,
+          `/images/work/${encodeURIComponent(projectId)}/${encodeURIComponent(file)}`,
       );
   }
 }

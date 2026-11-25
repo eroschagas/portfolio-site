@@ -12,7 +12,7 @@ const projects: ProjectData[] = [
     github: "https://github.com/eroschagas/file-manager",
     images: [
       {
-        src: "/ai-assisted/Lunera/home.webp",
+        src: "/images/ai-assisted/lunera-app/home.webp",
         alt: {
           en: "Lunera home screen with tools to find duplicates, organize files and edit metadata",
           pt: "Tela inicial do Lunera com ferramentas para encontrar duplicados, organizar arquivos e editar metadados",
@@ -23,7 +23,7 @@ const projects: ProjectData[] = [
         },
       },
       {
-        src: "/ai-assisted/Lunera/duplicates.webp",
+        src: "/images/ai-assisted/lunera-app/duplicates.webp",
         alt: {
           en: "Lunera duplicate detection screen with folder selection and similarity settings",
           pt: "Tela de detecção de duplicados do Lunera com seleção de pastas e ajuste de similaridade",
@@ -34,7 +34,7 @@ const projects: ProjectData[] = [
         },
       },
       {
-        src: "/ai-assisted/Lunera/organizer.webp",
+        src: "/images/ai-assisted/lunera-app/organizer.webp",
         alt: {
           en: "Lunera file organizer with folder selection, a year and month path example, and an organization preview button",
           pt: "Organizador de arquivos do Lunera com seleção de pasta, exemplo de caminho por ano e mês e botão de prévia da organização",
@@ -45,7 +45,7 @@ const projects: ProjectData[] = [
         },
       },
       {
-        src: "/ai-assisted/Lunera/metadata.webp",
+        src: "/images/ai-assisted/lunera-app/metadata.webp",
         alt: {
           en: "Lunera batch metadata editor with a media folder field and buttons to choose a folder and read metadata",
           pt: "Editor de metadados em lote do Lunera com campo de pasta de mídia e botões para escolher a pasta e ler metadados",
@@ -64,6 +64,15 @@ const projects: ProjectData[] = [
       pt: "Aplicativo desktop desenvolvido com Vue 3, TypeScript e Electron, com auxílio de IA. Importa planilhas e consulta preços mínimos e máximos por código de barras, termo, categoria ou tipo de combustível, na região e no raio selecionados. Grava os resultados nas colunas escolhidas e exporta uma cópia em XLSX, XLSM ou CSV, com cancelamento, resultados parciais e novas tentativas para consultas com falha.",
     },
     link: "https://drive.google.com/file/d/1zeeUIPLaBb8qCiH5OeZKHonmuhGMMRjo/view?usp=drive_link",
+    images: [
+      {
+        src: "/images/ai-assisted/price-app/home.webp",
+        alt: {
+          en: "Price Check home screen",
+          pt: "Tela inicial do Consulta de Preços",
+        },
+      },
+    ],
   },
 ];
 

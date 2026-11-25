@@ -15,6 +15,10 @@
     "vue-router": "^5.4.0"
   },
   "devDependencies": {
+    "@types/node": "^26.6.10",
     "sass": "^1.108.2"
+  },
+  "engines": {
+    "node": ">=26.13.1 <27"
   }
 }

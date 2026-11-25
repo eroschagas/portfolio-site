@@ -3,7 +3,7 @@ import { readdirSync } from "node:fs";
 import { WorkImageManifest } from "./build/WorkImageManifest";
 
 const workImagesDirectory = fileURLToPath(
-  new URL("./public/work", import.meta.url),
+  new URL("./public/images/work", import.meta.url),
 );
 const discoveryPaths = [
   "/",
@@ -19,7 +19,15 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   css: ["~/assets/main.scss"],
-  watch: [workImagesDirectory, /(?:^|[\\/])public[\\/]work(?:[\\/]|$)/],
+  watch: [
+    workImagesDirectory,
+    /(?:^|[\\/])public[\\/]images[\\/]work(?:[\\/]|$)/,
+  ],
+  typescript: {
+    nodeTsConfig: {
+      compilerOptions: { types: ["node"] },
+    },
+  },
   runtimeConfig: {
     discoveryPaths,
     public: {

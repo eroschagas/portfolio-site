@@ -146,6 +146,22 @@ After `npm run build`, run `npm exec --yes --package=playwright -- node tests/re
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Node.js
+
+Use Node.js **26.13.1 LTS** with npm. The `.nvmrc` file pins the runtime, and `package.json` requires Node 26.13.1 or a newer release within major version 26. NVM for Windows 2 can detect `.nvmrc` in shim mode.
+
+Use Node.js **26.13.1 LTS** com npm. O arquivo `.nvmrc` fixa o runtime, e o `package.json` exige Node 26.13.1 ou uma versão posterior da linha 26. O NVM for Windows 2 pode detectar `.nvmrc` no modo shim.
+
+```bash
+nvm install 26.13.1
+nvm use 26.13.1
+node -v
+npm ci
+npm run dev
+```
+
+Configure the deployment platform to use `.nvmrc` or Node 26.13.1. / Configure a hospedagem para usar `.nvmrc` ou Node 26.13.1.
+
 ## Setup
 
 Make sure to install dependencies:

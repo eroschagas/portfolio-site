@@ -10,7 +10,7 @@ import { WorkPeriod } from "../app/models/WorkPeriod.ts";
 import socarrao from "../app/data/work/socarrao.ts";
 
 test("every work screenshot has positional alt and description in both languages", () => {
-  const manifest = new WorkImageManifest("public/work").generate();
+  const manifest = new WorkImageManifest("public/images/work").generate();
   const projects = new Map();
   const collect = (items) =>
     items.forEach((project) => {
@@ -24,18 +24,18 @@ test("every work screenshot has positional alt and description in both languages
     assert.equal(
       project.images?.length,
       images.length,
-      `Metadata count for ${id}`
+      `Metadata count for ${id}`,
     );
     project.images.forEach((image, index) => {
       ["en", "pt"].forEach((language) => {
         ["alt", "description"].forEach((field) => {
           assert.ok(
             image[field][language]?.trim(),
-            `${id} image ${index + 1}: ${field} ${language}`
+            `${id} image ${index + 1}: ${field} ${language}`,
           );
           assert.doesNotMatch(
             image[field][language],
-            /\uFFFD|Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]/u
+            /\uFFFD|Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]/u,
           );
         });
       });
@@ -57,7 +57,7 @@ test("work periods reject malformed dates, invalid months and reversed ranges", 
     (value) => {
       assert.throws(() => new WorkPeriod(value, "12/2026"));
       if (value) assert.throws(() => new WorkPeriod("01/2026", value));
-    }
+    },
   );
   assert.throws(() => new WorkPeriod("02/2026", "01/2026"));
 });
@@ -90,7 +90,7 @@ test("periods sort current work first by start, then completed work by end and s
   ]);
   assert.equal(
     new WorkPeriod("01/2026").compareRecent(new WorkPeriod("01/2026")),
-    0
+    0,
   );
 });
 
@@ -113,11 +113,13 @@ test("carousel wraps in both directions and resets for a different image set", (
 test("missing and empty project image collections are empty", () => {
   const catalog = new WorkImageCatalog({
     empty: [],
-    project: ["/work/project/01.png"],
+    project: ["/images/work/project/01.png"],
   });
   assert.deepEqual(catalog.getImages("missing"), []);
   assert.deepEqual(catalog.getImages("empty"), []);
-  assert.deepEqual(catalog.getImages("project"), ["/work/project/01.png"]);
+  assert.deepEqual(catalog.getImages("project"), [
+    "/images/work/project/01.png",
+  ]);
 });
 
 test("manifest discovers images, ignores non-images and directories, and sorts naturally", () => {
@@ -126,20 +128,20 @@ test("manifest discovers images, ignores non-images and directories, and sorts n
   try {
     assert.deepEqual(
       new WorkImageManifest(join(root, "absent")).generate(),
-      {}
+      {},
     );
     mkdirSync(join(root, "project"));
     mkdirSync(join(root, "empty"));
     mkdirSync(join(root, "project", "nested.png"));
     ["10.png", "02.webp", "01 image.JPG", "notes.txt"].forEach((name) =>
-      writeFileSync(join(root, "project", name), "", "utf8")
+      writeFileSync(join(root, "project", name), "", "utf8"),
     );
     const manifest = new WorkImageManifest(root).generate();
     assert.deepEqual(manifest.empty, []);
     assert.deepEqual(manifest.project, [
-      "/work/project/01%20image.JPG",
-      "/work/project/02.webp",
-      "/work/project/10.png",
+      "/images/work/project/01%20image.JPG",
+      "/images/work/project/02.webp",
+      "/images/work/project/10.png",
     ]);
   } finally {
     assert.ok(root.startsWith(prefix));

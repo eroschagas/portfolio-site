@@ -19,7 +19,9 @@ const { chromium } = await import(
 class WorkImageWatchAudit {
   origin = process.env.WORK_DEV_URL ?? "http://localhost:3000";
   async run() {
-    const folder = path.resolve("public/work/socarrao-private-seller-listings");
+    const folder = path.resolve(
+      "public/images/work/socarrao-private-seller-listings",
+    );
     const source = path.join(folder, "image.png");
     const temporaryImage = path.join(folder, "zz-watch-audit-temporary.png");
     assert.ok(fs.existsSync(source), "The project image must exist");
