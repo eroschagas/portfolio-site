@@ -1,8 +1,11 @@
 export class GalleryImageLoader {
   private readonly images = new Map<string, HTMLImageElement>();
 
-  async prepare(source: string): Promise<void> {
-    const image = this.load(source, "high");
+  async prepare(
+    source: string,
+    priority: "high" | "low" = "high",
+  ): Promise<void> {
+    const image = this.load(source, priority);
     await image.decode();
   }
 
